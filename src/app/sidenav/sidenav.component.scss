@@ -1,0 +1,128 @@
+@import "~variables.scss";
+hr{
+  opacity:0.30;
+}
+p{
+  color:$white-font;
+}
+.opennav{
+  height:auto!important;
+}
+.nav li a:link, .nav li a:visited{
+  font-size:14px;
+  font-weight:400;
+  text-decoration: none;
+  color:$white-font;
+}
+.nav li a:focus{
+  background-color:rgba(238, 238, 238, 0.52);
+  border-radius:5px;
+}
+.nav li a:hover, .nav li a:active{
+  background-color:rgba(238, 238, 238, 0.29);
+  border-radius:5px;
+  -webkit-transition: all 150ms ease-in;
+  -moz-transition: all 150ms ease-in;
+  -o-transition: all 150ms ease-in;
+  -ms-transition: all 150ms ease-in;
+  transition: all 150ms ease-in;
+}
+.nav li{
+  margin-bottom:5px;
+  p{
+    display:inline-block;
+    line-height: 30px;
+    margin-bottom:0;
+    text-transform: uppercase;
+  }
+  i{
+    line-height:30px;
+    font-size:14px;
+    display:inline-block;
+    margin-right:15px;
+  }
+}
+  .sidenav-wrapper{
+    position:absolute;
+    display:block;
+    height:100%;
+    width:260px;
+    z-index: 10;
+    top:0;
+    bottom:0;
+    left:0;
+    padding:15px 30px;
+    color:$white-font;
+    .side-bar{
+      .logo{
+        display:block;
+        width:100%;
+        margin-left:auto;
+        margin-right:auto;
+        margin-top:15px;
+      }
+      .profile-area{
+        text-align:center;
+        img{
+          border-radius:50%;
+          width:80px;
+          display:block;
+          margin-left:auto;
+          margin-right:auto;
+          margin-top:40px;
+          border:4px rgba(255, 255, 255, 0.41) solid;
+        }
+        .tag-area{
+          margin-top:30px;
+          cursor:pointer;
+          h5{
+            margin-left:14px;
+            display:inline-block;
+            font-weight:500;
+            font-size:18px;
+            margin-bottom:4px;
+          }
+          h6{
+            display:inline-block;
+            font-weight:300;
+            margin-top:0;
+          }
+          .nav{
+            height:0px;
+            overflow:hidden;
+            li{
+                margin-bottom:0;
+              p{
+                font-size:12px;
+              }
+            }
+          }
+        }
+      }
+    }
+    .background-color{
+      position:absolute;
+      z-index: -1;
+      opacity:0.85;
+      top:0;
+      left:0;
+      bottom:0;
+      height:100%;
+      width:100%;
+      background-color:$ordbogen-green;
+    }
+    .background-image{
+      position:absolute;
+      z-index: -2;
+      top:0;
+      left:0;
+      bottom:0;
+      height:100%;
+      width:100%;
+      background-size:cover;
+      background-repeat: no-repeat;
+      background-position:bottom;
+      background-position-x:-1300px;
+      background-image:url("../../assets/city-landscape.jpg");
+    }
+  }

@@ -1,0 +1,28 @@
+<div class="sidenav-wrapper">
+    <div class="side-bar">
+      <img class="logo" src="../../assets/white-logo.svg">
+      <hr>
+      <div class="profile-area">
+        <img src="../../assets/whitney.jpg">
+        <div class="tag-area" (click)="toggleProfileNav()">
+              <h5>Whitney Jørgensen</h5> <b class="caret" [class.caret-switch]="profileNavCtrl"></b>
+              <h6>Head of Talent Recruitment</h6>
+              <ul class="nav" [class.opennav]="profileNavCtrl">
+                <li><a href=""><p>my profile</p></a></li>
+                <li><a href=""><p>edit profile</p></a></li>
+                <li><a href=""><p>settings</p></a></li>
+              </ul>
+        </div>
+      </div>
+      <hr>
+      <ul class="nav">
+        <li><a href="#"><i class="fa fa-home"></i><p>home</p></a></li>
+        <li><a href="#"><i class="fa fa-calendar"></i><p>calendar</p></a></li>
+        <li><a href="#"><i class="fa fa-list"></i><p>tasks</p></a></li>
+        <li><a href="#"><i class="fa fa-map-o"></i><p>styleguide</p></a></li>
+        <li><a href="#"><i class="fa fa-print"></i><p>print checklist</p></a></li>
+      </ul>
+    </div>
+    <div class="background-color"></div>
+    <div class="background-image"></div>
+</div>

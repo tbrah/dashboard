@@ -1,0 +1,33 @@
+@import "~variables.scss";
+.container-fluid{
+  background-color:$background-white;
+  border-bottom:1px solid rgba(0, 0, 0, 0.1);
+  height:5%;
+  .content-wrapper{
+    display:flex;
+    justify-content: space-between;
+    padding-top:10px;
+    padding-bottom:10px;
+    .left-content{
+      h5{
+        margin-top:5px;
+      }
+      .green{
+        color:$ordbogen-green;
+      }
+    }
+    .right-content{
+      .add{
+        cursor:pointer;
+        display:inline-block;
+      }
+      i{
+        color:$ordbogen-green;
+        vertical-align: middle;
+        font-size:25px;
+        margin-left:10px;
+        display:inline-block;
+      }
+    }
+  }
+}

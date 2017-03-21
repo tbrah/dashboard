@@ -1,0 +1,16 @@
+@import "~variables.scss";
+.wrapper{
+  height:100%;
+  position:relative;
+  float:right;
+  background-color:$background-gray;
+  width:calc(100% - 260px);
+}
+.main-view{
+  position:relative;
+  background-color:$background-gray;
+  width:100%;
+  padding: 30px 15px;
+  height:95%;
+  overflow-y: scroll;
+}
