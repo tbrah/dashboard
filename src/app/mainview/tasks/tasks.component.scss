@@ -1,10 +1,23 @@
 @import "~variables.scss";
+.task-done{
+  background-color:$ordbogen-green!important;
+  p{
+    color:$white-font!important;
+  }
+  h1{
+    color:$white-font!important;
+  }
+  i{
+    color:$white-font!important;
+  }
+}
 .task-wrapper{
   width:100%;
   border-radius:$border-radius;
   background-color:#FFF;
   padding:30px;
   box-shadow:$default-shadow;
+  margin-bottom:30px;
   .header{
     display:flex;
     justify-content: space-between;
@@ -23,6 +36,9 @@
     }
   }
   .status-wrapper{
+    .fa-pause-circle-o{
+      color:#e67e22;
+    }
     p{
       padding-right:10px;
       padding-left:10px;

@@ -1,36 +1,32 @@
-<div class="task-wrapper">
+<div class="task-wrapper" *ngFor="let item of TaskService.tasks" [class.task-done]="item.adminaprov === true">
   <div class="header">
-    <h1>This is a testing title</h1>
+    <h1>{{item.title}}</h1>
     <div class="right-content">
-      <p><i class="fa fa-users"></i>  Participants:</p><img class="profile-pic-circle" src="../../assets/kristy.png" tooltip="Kristy Cunt"><img class="profile-pic-circle" src="../../assets/profpic.jpg" tooltip="John Doet">
+      <p><i class="fa fa-users"></i>  Participants:</p><img class="profile-pic-circle" src="../../assets/{{item.participentpic}}" tooltip="{{item.participent}}">
     </div>
   </div>
     <div class="status-wrapper">
-      <p><i class="fa fa-check-circle"></i> Status: Active</p><p><i class="fa fa-spinner fa-pulse fa-3x"></i> Waiting for admin approval</p><p><i class="fa fa-pencil-square-o"></i> Edit</p>
+      <p><i class="fa fa-check-circle" [class.fa-pause-circle-o]="item.status === 'On hold'"></i> Status: {{item.status}}</p><p *ngIf="item.papprove === true"><i class="fa fa-spinner fa-pulse fa-3x"></i> Waiting for admin approval</p><p><i class="fa fa-pencil-square-o"></i> Edit</p>
     </div>
-<p class="description">This is a testing description. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut varius elit, sit amet dapibus odio. Pellentesque gravida ligula ullamcorper, volutpat metus vel, tempus nulla. Duis commodo ante ut mauris iaculis, non facilisis nisl commodo. Morbi euismod auctor dapibus. Phasellus metus dui, viverra et gravida eu, maximus quis ipsum. Praesent ornare pulvinar pulvinar. Suspendisse lacinia ex vitae nibh blandit, id blandit risus pellentesque. Cras lobortis sapien nec leo interdum facilisis ac sit amet massa. Aliquam pellentesque placerat ultrices. Maecenas varius tortor vel odio fermentum venenatis. Donec fringilla dictum mauris, fringilla tincidunt velit sodales id.
-
-Aenean sagittis, ex ut finibus venenatis, lorem augue egestas lorem, vel finibus eros erat in justo. Sed efficitur nisl a consequat condimentum. Quisque lobortis finibus faucibus. Maecenas non turpis massa. Nulla at turpis enim. Cras elementum lectus nec nulla hendrerit hendrerit. Integer pulvinar non sapien sit amet sodales. Phasellus lorem tortor, condimentum eget accumsan at, consequat in arcu. Fusce sit amet sem nec neque pellentesque laoreet. Maecenas rhoncus tellus facilisis est consectetur aliquet. Quisque elit ipsum, pharetra sit amet hendrerit ac, molestie sagittis nibh.
-
-Curabitur consequat odio non lectus ullamcorper, vel sodales ipsum feugiat. Curabitur volutpat sit amet eros sed egestas. Proin condimentum nunc id aliquet tincidunt. Phasellus volutpat sodales fermentum. Ut elementum nulla vel ligula ullamcorper, at dapibus nunc convallis. Sed aliquet, felis sit amet dictum vehicula, sapien risus elementum purus, non iaculis est ante in massa. Fusce at ultricies tellus.</p>
+<p class="description">{{item.description}}</p>
 
 <hr>
 
 <div class="details-content">
   <div class="details-subcontainer">
-    <p><i class="fa fa-calendar-plus-o"></i> Start date: <span class="detail-info">12 / 07 / 2017</span></p>
-    <p><i class="fa fa-calendar-check-o"></i> Deadline: <span class="detail-info"> 24 / 07 / 2017</span></p>
+    <p><i class="fa fa-calendar-plus-o"></i> Start date: <span class="detail-info">{{item.startdate}}</span></p>
+    <p><i class="fa fa-calendar-check-o"></i> Deadline: <span class="detail-info">{{item.deadline}}</span></p>
   </div>
   <div class="details-subcontainer">
-    <p><i class="fa fa-money"></i> Budget: <span class="detail-info">0 DKK</span></p>
+    <p><i class="fa fa-money"></i> Budget: <span class="detail-info">{{item.budget}}</span></p>
     <p><i class="fa fa-print"></i> Print Protocol: <span class="detail-info"><i class="fa fa-check-circle"></i></span></p>
   </div>
   <div class="details-subcontainer location">
-    <p><i class="fa fa-map-marker"></i><span class="detail-info"> MainStorage/Messell/Awesomestuff/mockup.xd</span></p>
-    <p><i class="fa fa-spinner fa-pulse fa-3x"></i> Waiting for admin approval: <input type="checkbox"></p>
+    <p [style.padding-top]="item.papprove ? '0px':'15px'"><i class="fa fa-map-marker"></i><span class="detail-info">{{item.location}}</span></p>
+    <p *ngIf="item.papprove === true"><i class="fa fa-spinner fa-pulse fa-3x"></i> Waiting for admin approval: <input type="checkbox"></p>
   </div>
   <div class="details-subcontainer orderby">
-    <p>Ordered by:</p><img class="profile-pic-circle" src="../../assets/whitney.jpg" tooltip="Whitney Jørgensen">
+    <p>Ordered by:</p><img class="profile-pic-circle" src="../../assets/{{item.orderbypic}}" tooltip="{{item.orderby}}">
   </div>
 </div>
 </div>
