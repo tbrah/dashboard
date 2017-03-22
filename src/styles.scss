@@ -32,3 +32,12 @@ h1{
     border: 3px solid rgba(0, 163, 136, 0.51);
   }
 }
+.pointer{
+  cursor: pointer;
+  &:hover{
+      opacity: 0.8;
+  }
+}
+.white-profile-pic-circle{
+  border: 3px solid rgba(255, 255, 255, 0.58);
+}

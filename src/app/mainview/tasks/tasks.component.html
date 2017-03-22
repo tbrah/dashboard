@@ -1,32 +1,38 @@
-<div class="task-wrapper" *ngFor="let item of TaskService.tasks" [class.task-done]="item.adminaprov === true">
-  <div class="header">
-    <h1>{{item.title}}</h1>
-    <div class="right-content">
-      <p><i class="fa fa-users"></i>  Participants:</p><img class="profile-pic-circle" src="../../assets/{{item.participentpic}}" tooltip="{{item.participent}}">
+<div class="task-wrapper" *ngFor="let item of TaskService.tasks" [class.task-done]="item.adminapprove === true">
+    <div class="header">
+      <h1>{{item.title}}</h1>
+      <div class="right-content">
+        <p><i class="fa fa-users"></i>  Participants:</p>
+        <img class="profile-pic-circle" [class.white-profile-pic-circle]="item.status === 'done'" src="../../assets/{{item.participentpic}}" tooltip="{{item.participent}}">
+      </div>
+    </div>
+      <div class="status-wrapper">
+        <p class="status"><i class="fa fa-check-circle fa-fw" [class.fa-pause-circle-o]="item.status === 'on hold'"></i> Status: {{item.status}}</p>
+        <p class="pointer" tooltip="Put this task on hold" *ngIf="item.status === 'active'" (click)="setHold(item)"><i class="fa fa-pause fa-fw"></i> Put on hold</p>
+        <p class="pointer" tooltip="Activate this task again" *ngIf="item.status === 'on hold'" (click)="setActive(item)"><i class="fa fa-play fa-fw"></i> Set to active</p>
+        <p *ngIf="item.papprove === true"><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i> Waiting for admin approval</p>
+        <p class="pointer" (click)="PopupService.editPopup(item)"><i class="fa fa-pencil-square-o fa-fw"></i> Edit</p>
+        <p class="pointer" *ngIf="item.status === 'done'" (click)="reopen(item)"><i class="fa fa-refresh"></i> Re-open</p>
+      </div>
+  <p class="description">{{item.description}}</p>
+
+  <hr>
+
+  <div class="details-content">
+    <div class="details-subcontainer">
+      <p><i class="fa fa-calendar-plus-o"></i> Start date: <span class="detail-info">{{item.startdate}}</span></p>
+      <p><i class="fa fa-calendar-check-o"></i> Deadline: <span class="detail-info">{{item.deadline}}</span></p>
+    </div>
+    <div class="details-subcontainer">
+      <p><i class="fa fa-money"></i> Budget: <span class="detail-info">{{item.budget}} DKK</span></p>
+      <p><i class="fa fa-print"></i> Print Protocol: <span class="detail-info"><i class="fa fa-check-circle" *ngIf="item.print === true" tooltip="Remember to use the print protocol"></i><i class="fa fa-times" *ngIf="item.print === false" tooltip="There is no print protocol"></i></span></p>
+    </div>
+    <div class="details-subcontainer">
+      <p [style.padding-top]="item.papprove ? '0px':'15px'"><i class="fa fa-map-marker"></i> {{item.location}}</p>
+      <p *ngIf="item.papprove === true"><i class="fa fa-spinner fa-pulse fa-3x"></i> Waiting for admin approval: <span class="approve-wrapper"><i class="pointer fa fa-check"(click)="approve(item)" tooltip="Approve"></i><i class="pointer fa fa-times"(click)="deny(item)" tooltip="Deny"></i></span></p>
+    </div>
+    <div class="details-subcontainer orderby">
+      <p>Ordered by:</p><img class="profile-pic-circle" [class.white-profile-pic-circle]="item.status === 'done'" src="../../assets/{{item.orderbypic}}" tooltip="{{item.orderby}}">
     </div>
   </div>
-    <div class="status-wrapper">
-      <p><i class="fa fa-check-circle" [class.fa-pause-circle-o]="item.status === 'On hold'"></i> Status: {{item.status}}</p><p *ngIf="item.papprove === true"><i class="fa fa-spinner fa-pulse fa-3x"></i> Waiting for admin approval</p><p><i class="fa fa-pencil-square-o"></i> Edit</p>
-    </div>
-<p class="description">{{item.description}}</p>
-
-<hr>
-
-<div class="details-content">
-  <div class="details-subcontainer">
-    <p><i class="fa fa-calendar-plus-o"></i> Start date: <span class="detail-info">{{item.startdate}}</span></p>
-    <p><i class="fa fa-calendar-check-o"></i> Deadline: <span class="detail-info">{{item.deadline}}</span></p>
-  </div>
-  <div class="details-subcontainer">
-    <p><i class="fa fa-money"></i> Budget: <span class="detail-info">{{item.budget}}</span></p>
-    <p><i class="fa fa-print"></i> Print Protocol: <span class="detail-info"><i class="fa fa-check-circle"></i></span></p>
-  </div>
-  <div class="details-subcontainer location">
-    <p [style.padding-top]="item.papprove ? '0px':'15px'"><i class="fa fa-map-marker"></i><span class="detail-info">{{item.location}}</span></p>
-    <p *ngIf="item.papprove === true"><i class="fa fa-spinner fa-pulse fa-3x"></i> Waiting for admin approval: <input type="checkbox"></p>
-  </div>
-  <div class="details-subcontainer orderby">
-    <p>Ordered by:</p><img class="profile-pic-circle" src="../../assets/{{item.orderbypic}}" tooltip="{{item.orderby}}">
-  </div>
-</div>
 </div>

@@ -1,0 +1,21 @@
+@import "~variables.scss";
+.custom-modal{
+  position:fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  z-index:1050;
+  outline:0;
+}
+.modal-background{
+  position:fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  z-index: 1020;
+  outline:0;
+  background-color:#333;
+  opacity:0.4;
+}

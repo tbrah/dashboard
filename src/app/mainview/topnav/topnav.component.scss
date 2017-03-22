@@ -17,15 +17,24 @@
       }
     }
     .right-content{
-      .add{
-        cursor:pointer;
+      .admin{
+        margin-right:5px;
+      }
+      .plus{
+        padding-right:15px;
+      }
+      p{
         display:inline-block;
+        padding-right:10px;
+        padding-left:10px;
+        border-right: 1px solid $light-gray;
+        &:last-child{
+          border-right:none;
+        }
       }
       i{
-        color:$ordbogen-green;
-        vertical-align: middle;
+        vertical-align: sub;
         font-size:25px;
-        margin-left:10px;
         display:inline-block;
       }
     }

@@ -5,6 +5,7 @@ import { HttpModule } from '@angular/http';
 import { AlertModule } from 'ng2-bootstrap';
 import { AccordionModule } from 'ng2-bootstrap';
 import { TooltipModule } from 'ng2-bootstrap';
+import { ModalModule } from 'ng2-bootstrap';
 
 import { AppComponent } from './app.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
@@ -14,8 +15,10 @@ import { TopnavComponent } from './mainview/topnav/topnav.component';
 import { UsersService } from './users.service';
 import { PostsService } from './posts.service';
 import { TaskService } from './task.service';
+import { PopupService } from './popup.service';
 import { PostComponent } from './mainview/post/post.component';
 import { TasksComponent } from './mainview/tasks/tasks.component';
+import { PopupComponent } from './popup/popup.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,7 @@ import { TasksComponent } from './mainview/tasks/tasks.component';
     TopnavComponent,
     PostComponent,
     TasksComponent,
+    PopupComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,12 +37,14 @@ import { TasksComponent } from './mainview/tasks/tasks.component';
     AlertModule.forRoot(),
     AccordionModule.forRoot(),
     TooltipModule.forRoot(),
+    ModalModule.forRoot(),
 
   ],
   providers: [
     UsersService,
     PostsService,
     TaskService,
+    PopupService,
   ],
   bootstrap: [AppComponent]
 })

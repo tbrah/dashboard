@@ -1,0 +1,16 @@
+<div class="custom-modal" *ngIf="PopupService.popupState">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">{{PopupService.currentItem.title}}</h4>
+        <button type="button" class="close pull-right" (click)="PopupService.togglePopup()" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        {{PopupService.currentItem.description}}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal-background" *ngIf="PopupService.popupState"></div>
