@@ -7,6 +7,25 @@
   left:0;
   z-index:1050;
   outline:0;
+  .modal-header{
+    border:none;
+  }
+  .modal-content{
+    padding:30px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.17);
+    border:none;
+  }
+  input{
+    font-size:36px;
+    font-weight:500;
+    color:$ordbogen-green;
+    border:none;
+    width:95%;
+  }
+  textarea{
+    width:100%;
+    border: none;
+  }
 }
 .modal-background{
   position:fixed;
@@ -18,4 +37,53 @@
   outline:0;
   background-color:#333;
   opacity:0.4;
+}
+.details-content{
+  display:flex;
+  position:relative;
+  .detail-info{
+    float:right;
+    margin-left:10px;
+  }
+  .details-subcontainer{
+    padding-left:30px;
+    padding-right:30px;
+    padding-top:10px;
+    display:inline-block;
+    border-right:1px solid $light-gray;
+    &:first-child{
+      padding-left:0;
+    }
+    &:last-child{
+      border-right:none;
+    }
+    i{
+      font-size:inherit;
+    }
+  }
+  .approve-wrapper{
+    i{
+      font-size:20px;
+      margin-left:10px;
+      margin-right:10px;
+      &:last-child{
+        margin-right:0;
+      }
+    }
+    .fa-check:hover{
+      color:$ordbogen-green;
+    }
+    .fa-times:hover{
+      color:$red;
+    }
+  }
+  .orderby{
+    margin-left:auto;
+    margin-top:auto;
+    margin-bottom:auto;
+    padding:0;
+    p{
+      display:inline-block;
+    }
+  }
 }

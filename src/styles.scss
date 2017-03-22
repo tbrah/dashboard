@@ -41,3 +41,8 @@ h1{
 .white-profile-pic-circle{
   border: 3px solid rgba(255, 255, 255, 0.58);
 }
+@media (min-width:992px){
+  .modal-lg{
+    width:980px!important;
+  }
+}
