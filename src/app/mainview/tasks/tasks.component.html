@@ -1,4 +1,4 @@
-<div class="task-wrapper" *ngFor="let item of TaskService.tasks" [class.task-done]="item.adminapprove === true">
+<div class="task-wrapper" *ngFor="let item of TaskService.tasks | search:TaskService.currentSearch let idx = index" [class.task-done]="item.adminapprove === true">
     <div class="header">
       <h1>{{item.title}}</h1>
       <div class="right-content">
@@ -20,8 +20,15 @@
 
   <div class="details-content">
     <div class="details-subcontainer">
-      <p><i class="fa fa-calendar-plus-o"></i> Start date: <span class="detail-info">{{item.startdate}}</span></p>
-      <p><i class="fa fa-calendar-check-o"></i> Deadline: <span class="detail-info">{{item.deadline}}</span></p>
+      <p class="pointer" (click)="openCalendar(idx, item)"><i class="fa fa-calendar-plus-o"></i> Start date: <span class="detail-info">{{item.startdate}}</span></p>
+      <p class="pointer" (click)="openCalendar(idx, item)"><i class="fa fa-calendar-check-o"></i> Deadline: <span class="detail-info">{{item.deadline}}</span></p>
+      <div class="big-calendar-wrapper" *ngIf="setCalendar === idx">
+        <div class="calendar-wrapper">
+        <datepicker [(ngModel)]="currentDate.startdate" [minDate]="minDate" [showWeeks]="true"></datepicker>
+        {{currentDate.startdate | date:'dd-MM-yyyy'}}
+        </div>
+        <div class="calendar-background" (click)="openCalendar()"></div>
+      </div>
     </div>
     <div class="details-subcontainer">
       <p><i class="fa fa-money"></i> Budget: <span class="detail-info">{{item.budget}} DKK</span></p>

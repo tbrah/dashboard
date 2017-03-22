@@ -114,3 +114,19 @@
     }
   }
 }
+.calendar-wrapper{
+  position:absolute;
+  width:310px;
+  z-index:1050;
+}
+.calendar-background{
+  position:fixed;
+  top:0;
+  right:0;
+  bottom:0;
+  left:0;
+  z-index: 1020;
+  outline:0;
+  background-color:#333;
+  opacity:0.4;
+}

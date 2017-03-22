@@ -2,6 +2,7 @@
   <div class="content-wrapper">
     <div class="left-content">
       <h5>Welcome <span class="green">{{UsersService.loggedUser}}</span></h5>
+      <input type="text" placeholder="Search task titles"[(ngModel)]="TaskService.currentSearch">
     </div>
     <div class="right-content">
       <p><i class="fa fa-lock admin"></i> Admin Panel:</p>

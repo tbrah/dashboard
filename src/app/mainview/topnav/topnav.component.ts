@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../users.service';
+import { TaskService } from '../../task.service';
 
 @Component({
   selector: 'app-topnav',
@@ -8,7 +9,7 @@ import { UsersService } from '../../users.service';
 })
 export class TopnavComponent implements OnInit {
 
-  constructor(private UsersService:UsersService) { }
+  constructor(private UsersService:UsersService, private TaskService:TaskService) { }
 
   ngOnInit() {
   }

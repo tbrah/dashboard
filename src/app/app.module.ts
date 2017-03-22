@@ -6,6 +6,7 @@ import { AlertModule } from 'ng2-bootstrap';
 import { AccordionModule } from 'ng2-bootstrap';
 import { TooltipModule } from 'ng2-bootstrap';
 import { ModalModule } from 'ng2-bootstrap';
+import { DatepickerModule } from 'ng2-bootstrap';
 
 import { AppComponent } from './app.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
@@ -16,9 +17,11 @@ import { UsersService } from './users.service';
 import { PostsService } from './posts.service';
 import { TaskService } from './task.service';
 import { PopupService } from './popup.service';
+import { DatepickerService } from './datepicker.service';
 import { PostComponent } from './mainview/post/post.component';
 import { TasksComponent } from './mainview/tasks/tasks.component';
 import { PopupComponent } from './popup/popup.component';
+import { SearchPipe } from './search.pipe';
 
 @NgModule({
   declarations: [
@@ -29,6 +32,7 @@ import { PopupComponent } from './popup/popup.component';
     PostComponent,
     TasksComponent,
     PopupComponent,
+    SearchPipe,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +42,7 @@ import { PopupComponent } from './popup/popup.component';
     AccordionModule.forRoot(),
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
+    DatepickerModule.forRoot(),
 
   ],
   providers: [
@@ -45,6 +50,7 @@ import { PopupComponent } from './popup/popup.component';
     PostsService,
     TaskService,
     PopupService,
+    DatepickerService,
   ],
   bootstrap: [AppComponent]
 })
