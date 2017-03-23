@@ -14,4 +14,12 @@ export class TopnavComponent implements OnInit {
   ngOnInit() {
   }
 
+  toggleDelete(){
+    if(this.TaskService.deleteActivation === false){
+      this.TaskService.deleteActivation = true;
+    } else {
+      this.TaskService.deleteActivation = false;
+    }
+  }
+
 }

@@ -11,7 +11,14 @@ import { DatepickerService } from '../../datepicker.service';
 })
 export class TasksComponent implements OnInit {
 
-  setCalendar = null;
+  /*Edit*/
+  editActive:number;
+  currentTask = [];
+  undoChanges = []; // {id:0, title: "testing", description: ""}
+
+  /*Calendar variables*/
+  setCalendarStartDate = null;
+  setCalendarDeadline = null;
   currentDate = [];
   pickedDate:any;
 
@@ -19,8 +26,24 @@ export class TasksComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
 
+  }
+  enableEdit(item, idx){
+    if(this.editActive === idx){
+      this.editActive = null;
+      this.currentTask = [];
+    } else {
+      // Undochanges saves the state in an array for undo
+      // Comming soon
+      this.undoChanges = item;
+      this.editActive = idx;
+      this.currentTask = item;
+    }
+  }
+  delete(item,idx){
+    let i = idx;
+    this.TaskService.tasks.splice(i, 1);
+  }
   approve(item){
     item.adminapprove = true;
     item.papprove = false;
@@ -41,14 +64,25 @@ export class TasksComponent implements OnInit {
   setActive(item){
     item.status = "active";
   }
-
-  openCalendar(idx, item){
+  closeCalendar(){
+    this.currentDate = null;
+    this.setCalendarStartDate = null;
+    this.setCalendarDeadline = null;
+  }
+  openCalendarStart(idx, item){
     this.currentDate = item;
-    if(this.setCalendar === null){
-      this.setCalendar = idx;
-      console.log(this.currentDate);
+    if(this.setCalendarStartDate === null){
+      this.setCalendarStartDate = idx;
     } else {
-      this.setCalendar = null;
+      this.setCalendarStartDate = null;
+    }
+  }
+  openCalendarDeadline(idx, item){
+    this.currentDate = item;
+    if(this.setCalendarDeadline === null){
+      this.setCalendarDeadline = idx;
+    } else {
+      this.setCalendarDeadline = null;
     }
   }
 

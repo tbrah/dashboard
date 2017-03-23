@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-mainview',
@@ -8,7 +9,7 @@ import { Component, OnInit } from '@angular/core';
 export class MainviewComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(private TaskService:TaskService) { }
 
   ngOnInit() {
   }
