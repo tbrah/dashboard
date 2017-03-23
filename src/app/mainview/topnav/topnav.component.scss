@@ -2,26 +2,38 @@
 .container-fluid{
   background-color:$background-white;
   border-bottom:1px solid rgba(0, 0, 0, 0.1);
-  height:5%;
+  height:6%;
   .content-wrapper{
     display:flex;
     justify-content: space-between;
     padding-top:10px;
     padding-bottom:10px;
     .left-content{
-      input{
+      .search-field{
+        position:relative;
         min-width:300px;
         margin-left:10px;
         display:inline-block;
         border-radius:$border-radius;
         border: 1px solid $light-gray;
-        padding:5px 10px 5px 10px;
         outline:0;
         color:$gray-font;
-        &:focus{
-          -webkit-box-shadow: 0px 0px 3px 0px rgba(0,163,136,1);
-          -moz-box-shadow: 0px 0px 3px 0px rgba(0,163,136,1);
-          box-shadow: 0px 0px 3px 0px rgba(0,163,136,1);
+        label{
+          position:absolute;
+          left:8px;
+          top:4px;
+          margin-bottom:0;
+        }
+        input{
+          border-radius:$border-radius;
+          min-width:300px;
+          border:none;
+          padding: 5px 10px 5px 25px;
+          outline:0;
+          vertical-align: middle;
+          &:focus{
+            outline-color:$ordbogen-green;
+          }
         }
       }
       h5{
@@ -33,6 +45,8 @@
       }
     }
     .right-content{
+      margin-top:auto;
+      margin-bottom:auto;
       .admin{
         margin-right:5px;
       }
@@ -44,6 +58,7 @@
         padding-right:10px;
         padding-left:10px;
         border-right: 1px solid $light-gray;
+        margin-bottom:0;
         &:last-child{
           border-right:none;
         }

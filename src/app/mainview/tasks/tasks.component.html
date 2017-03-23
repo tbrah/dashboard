@@ -48,10 +48,11 @@
       <p [hidden]="editActive === idx"><i class="fa fa-money"></i> Budget: <span class="detail-info">{{item.budget}} DKK</span></p>
       <p *ngIf="editActive === idx"><i class="fa fa-money"></i> Budget: <span class="detail-info"><input class="budget-input" type="number" value="{{item.budget}}" [(ngModel)]="currentTask.budget"> DKK</span></p>
       <p [hidden]="editActive === idx"><i class="fa fa-print"></i> Print Protocol: <span class="detail-info"><i class="fa fa-check-circle" *ngIf="item.print === true" tooltip="Remember to use the print protocol"></i><i class="fa fa-times" *ngIf="item.print === false" tooltip="There is no print protocol"></i></span></p>
-      <p *ngIf="editActive === idx"><i class="fa fa-print"></i> Print Protocol: <span class="detail-info"><i class="fa fa-check-circle pointer edit-print" [class.selected-print]="item.print"></i><i class="fa fa-times pointer edit-print" [class.selected-print]="!item.print"></i></span></p>
+      <p *ngIf="editActive === idx"><i class="fa fa-print"></i> Print Protocol: <span class="detail-info" tooltip="Select if print protocol is required" placement="bottom"><i class="fa fa-check-circle pointer edit-print" [class.selected-print]="item.print" (click)="printSelector($event, item)"></i><i class="fa fa-times pointer edit-print" [class.selected-print]="!item.print" (click)="printSelector($event, item)"></i></span></p>
     </div>
     <div class="details-subcontainer">
-      <p [style.padding-top]="item.papprove ? '0px':'15px'"><i class="fa fa-map-marker"></i> {{item.location}}</p>
+      <p [style.padding-top]="item.papprove ? '0px':'15px'" [hidden]="editActive === idx"><i class="fa fa-map-marker"></i> {{item.location}}</p>
+      <p [style.padding-top]="item.papprove ? '0px':'15px'" *ngIf="editActive === idx"><i class="fa fa-map-marker"></i> <input value="{{item.location}}"></p>
       <p *ngIf="item.papprove === true"><i class="fa fa-spinner fa-pulse fa-3x"></i> Waiting for admin approval: <span class="approve-wrapper"><i class="pointer fa fa-check"(click)="approve(item)" tooltip="Approve"></i><i class="pointer fa fa-times"(click)="deny(item)" tooltip="Deny"></i></span></p>
     </div>
     <div class="details-subcontainer orderby">
