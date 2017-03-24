@@ -6,7 +6,7 @@
   .content-wrapper{
     display:flex;
     justify-content: space-between;
-    padding-top:10px;
+    padding-top:17px;
     padding-bottom:10px;
     .left-content{
       .search-field{
@@ -14,14 +14,11 @@
         min-width:300px;
         margin-left:10px;
         display:inline-block;
-        border-radius:$border-radius;
-        border: 1px solid $light-gray;
-        outline:0;
         color:$gray-font;
         label{
           position:absolute;
           left:8px;
-          top:4px;
+          top:5px;
           margin-bottom:0;
         }
         input{
@@ -31,8 +28,10 @@
           padding: 5px 10px 5px 25px;
           outline:0;
           vertical-align: middle;
+          border-radius:$border-radius;
+          border: 1px solid $light-gray;
           &:focus{
-            outline-color:$ordbogen-green;
+            border-color: rgba(0, 163, 136, 0.31);
           }
         }
       }

@@ -22,6 +22,7 @@ import { PostComponent } from './mainview/post/post.component';
 import { TasksComponent } from './mainview/tasks/tasks.component';
 import { PopupComponent } from './popup/popup.component';
 import { SearchPipe } from './search.pipe';
+import { AddTaskComponent } from './add-task/add-task.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { SearchPipe } from './search.pipe';
     TasksComponent,
     PopupComponent,
     SearchPipe,
+    AddTaskComponent,
   ],
   imports: [
     BrowserModule,

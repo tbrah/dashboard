@@ -1,0 +1,43 @@
+<div class="modal-header">
+  <input type="text" placeholder="Write your title here...">
+  <button type="button" class="close" (click)="PopupService.togglePopup()" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+      <div class="modal-body">
+        <textarea placeholder="Description goes here..."></textarea>
+        <hr>
+        <div class="details-content">
+          <div class="details-subcontainer">
+            <p><i class="fa fa-calendar-plus-o"></i> Start date: <span class="detail-info"></span></p>
+            <p><i class="fa fa-calendar-check-o"></i> Deadline: <span class="detail-info"></span></p>
+
+            <div class="big-calendar-wrapper">
+              <div class="calendar-wrapper">
+                <h5>Pick a start date:</h5>
+                <datepicker [minDate]="minDate" [showWeeks]="true"></datepicker>
+                </div>
+              <div class="calendar-background" (click)="closeCalendar()"></div>
+            </div>
+
+            <div class="big-calendar-wrapper">
+              <div class="calendar-wrapper">
+                <h5>Pick a deadline:</h5>
+              <datepicker [minDate]="minDate" [showWeeks]="true"></datepicker>
+              </div>
+              <div class="calendar-background" (click)="closeCalendar()"></div>
+            </div>
+
+
+          </div>
+          <div class="details-subcontainer">
+            <p><i class="fa fa-money"></i> Budget: <span class="detail-info"><input type="number">DKK</span></p>
+            <p><i class="fa fa-print"></i> Print Protocol: <span class="detail-info"><i class="fa fa-check-circle" tooltip="Remember to use the print protocol"></i><i class="fa fa-times" tooltip="There is no print protocol"></i></span></p>
+          </div>
+          <div class="details-subcontainer">
+          </div>
+          <div class="details-subcontainer orderby">
+            <p>Ordered by:</p><img class="profile-pic-circle" src="./assets/{{UsersService.loggedUser.picture}}" tooltip="{{UsersService.loggedUser.name}}">
+          </div>
+        </div>
+      </div><!--modal-body-->

@@ -26,9 +26,8 @@ export class TasksComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
-  //check if the icon clicked on is the tick 
+  //check if the icon clicked on is the tick
   printSelector(event, item){
     if (event.srcElement.className.includes("fa-check-circle")){
       item.print = true;

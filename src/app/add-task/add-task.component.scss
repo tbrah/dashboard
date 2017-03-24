@@ -1,0 +1,67 @@
+@import "~variables.scss";
+.close{
+  position:absolute;
+  right:20px;
+  top:15px;
+}
+.modal-header{
+  border:none;
+  input{
+    font-size:36px;
+    font-weight:500;
+    color:$ordbogen-green;
+    width:100%;
+  }
+}
+textarea{
+  width:100%;
+}
+.details-content{
+  display:flex;
+  position:relative;
+  .detail-info{
+    float:right;
+    margin-left:10px;
+  }
+  .details-subcontainer{
+    padding-left:30px;
+    padding-right:30px;
+    padding-top:10px;
+    display:inline-block;
+    border-right:1px solid $light-gray;
+    &:first-child{
+      padding-left:0;
+    }
+    &:last-child{
+      border-right:none;
+    }
+    i{
+      font-size:inherit;
+    }
+  }
+  .approve-wrapper{
+    i{
+      font-size:20px;
+      margin-left:10px;
+      margin-right:10px;
+      &:last-child{
+        margin-right:0;
+      }
+    }
+    .fa-check:hover{
+      color:$ordbogen-green;
+    }
+    .fa-times:hover{
+      color:$red;
+    }
+  }
+  .orderby{
+    margin-left:auto;
+    margin-top:auto;
+    margin-bottom:auto;
+    padding:0;
+    p{
+      display:inline-block;
+    }
+  }
+}

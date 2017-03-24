@@ -9,7 +9,7 @@ export class UsersService {
     {id: 2, username : "Kristy Cunt" , position : "Software Developer" , img: "kristy.png", admin: false,},
   ];
 
-  loggedUser = "Whitney Jørgensen";
+  loggedUser = {name:"Whitney Jørgensen", picture:"whitney.jpg"};
 
   constructor() { }
 

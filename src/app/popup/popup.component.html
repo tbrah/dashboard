@@ -1,34 +1,8 @@
 <div class="custom-modal" *ngIf="PopupService.popupState">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <div class="modal-header">
-        <input type="text" value="{{PopupService.currentItem.title}}" [(ngModel)]="PopupService.currentItem.title">
-        <button type="button" class="close pull-right" (click)="PopupService.togglePopup()" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <textarea [(ngModel)]="PopupService.currentItem.description">{{PopupService.currentItem.description}}</textarea>
-        <hr>
-        <div class="details-content">
-          <div class="details-subcontainer">
-            <p><i class="fa fa-calendar-plus-o"></i> Start date: <span class="detail-info">{{PopupService.currentItem.startdate | date:'dd-MM-yyyy'}}</span></p>
-            <p><i class="fa fa-calendar-check-o"></i> Deadline: <span class="detail-info">{{PopupService.currentItem.deadline | date:'dd-MM-yyyy'}}</span></p>
-          </div>
-          <div class="details-subcontainer">
-            <p><i class="fa fa-money"></i> Budget: <span class="detail-info">{{PopupService.currentItem.budget}} DKK</span></p>
-            <p><i class="fa fa-print"></i> Print Protocol: <span class="detail-info"><i class="fa fa-check-circle" *ngIf="PopupService.currentItem.print === true" tooltip="Remember to use the print protocol"></i><i class="fa fa-times" *ngIf="PopupService.currentItem.print === false" tooltip="There is no print protocol"></i></span></p>
-          </div>
-          <div class="details-subcontainer">
-            <p [style.padding-top]="PopupService.currentItem.papprove ? '0px':'15px'"><i class="fa fa-map-marker"></i> {{PopupService.currentItem.location}}</p>
-            <p *ngIf="PopupService.currentItem.papprove === true"><i class="fa fa-spinner fa-pulse fa-3x"></i> Waiting for admin approval: <span class="approve-wrapper"><i class="pointer fa fa-check"(click)="approve(item)" tooltip="Approve"></i><i class="pointer fa fa-times"(click)="deny(item)" tooltip="Deny"></i></span></p>
-          </div>
-          <div class="details-subcontainer orderby">
-            <p>Ordered by:</p><img class="profile-pic-circle" [class.white-profile-pic-circle]="PopupService.currentItem.status === 'done'" src="./assets/{{PopupService.currentItem.orderbypic}}" tooltip="{{PopupService.currentItem.orderby}}">
-          </div>
-        </div>
-      </div><!--modal-body-->
+        <app-add-task></app-add-task>
     </div>
   </div>
 </div>
-<div class="modal-background" *ngIf="PopupService.popupState"></div>
+<div class="modal-background" *ngIf="PopupService.popupState" (click)="PopupService.togglePopup()"></div>

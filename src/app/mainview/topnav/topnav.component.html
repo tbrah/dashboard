@@ -1,12 +1,12 @@
 <div class="container-fluid">
   <div class="content-wrapper">
     <div class="left-content">
-      <h5>Welcome <span class="green">{{UsersService.loggedUser}}</span></h5>
+      <h5>Welcome <span class="green">{{UsersService.loggedUser.name}}</span></h5>
       <div class="search-field"><label><i class="fa fa-search"></i></label><input type="text" placeholder="Search"[(ngModel)]="TaskService.currentSearch"></div>
     </div>
     <div class="right-content">
       <p><i class="fa fa-lock admin"></i> Admin Panel:</p>
-      <p class="pointer plus" tooltip="Add a new task" placement="bottom"><i class="fa fa-plus-circle fa-fw"></i></p>
+      <p class="pointer plus" tooltip="Add a new task" placement="bottom" (click)="PopupService.togglePopup()"><i class="fa fa-plus-circle fa-fw"></i></p>
       <p class="pointer" tooltip="Toggle delete buttons" placement="left" (click)="toggleDelete()"><i class="fa fa-trash-o fa-fw"></i></p>
     </div>
   </div>
