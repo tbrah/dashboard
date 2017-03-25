@@ -157,29 +157,3 @@
     }
   }
 }
-.calendar-wrapper{
-  position:absolute;
-  width:310px;
-  z-index:1050;
-  top:-210px;
-  left:190px;
-  h5{
-    text-align:center;
-    border-top-left-radius: 3px;
-    border-top-right-radius: 3px;
-    background-color:#f5f5f5;
-    margin-bottom:-2px;
-    padding: 10px 5px 10px 5px;
-  }
-}
-.calendar-background{
-  position:fixed;
-  top:0;
-  right:0;
-  bottom:0;
-  left:0;
-  z-index: 1020;
-  outline:0;
-  background-color:#333;
-  opacity:0.4;
-}

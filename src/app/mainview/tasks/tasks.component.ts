@@ -16,11 +16,6 @@ export class TasksComponent implements OnInit {
   currentTask = [];
   undoChanges = []; // {id:0, title: "testing", description: ""}
 
-  /*Calendar variables*/
-  setCalendarStartDate = null;
-  setCalendarDeadline = null;
-  currentDate = [];
-  pickedDate:any;
 
   constructor(private TaskService:TaskService, private UsersService:UsersService, private PopupService:PopupService, private DatepickerService:DatepickerService) {
   }
@@ -72,24 +67,24 @@ export class TasksComponent implements OnInit {
     item.status = "active";
   }
   closeCalendar(){
-    this.currentDate = null;
-    this.setCalendarStartDate = null;
-    this.setCalendarDeadline = null;
+    this.DatepickerService.currentDate = null;
+    this.DatepickerService.setCalendarStartDate = null;
+    this.DatepickerService.setCalendarDeadline = null;
   }
   openCalendarStart(idx, item){
-    this.currentDate = item;
-    if(this.setCalendarStartDate === null){
-      this.setCalendarStartDate = idx;
+    this.DatepickerService.currentDate = item;
+    if(this.DatepickerService.setCalendarStartDate === null){
+      this.DatepickerService.setCalendarStartDate = idx;
     } else {
-      this.setCalendarStartDate = null;
+      this.DatepickerService.setCalendarStartDate = null;
     }
   }
   openCalendarDeadline(idx, item){
-    this.currentDate = item;
-    if(this.setCalendarDeadline === null){
-      this.setCalendarDeadline = idx;
+    this.DatepickerService.currentDate = item;
+    if(this.DatepickerService.setCalendarDeadline === null){
+      this.DatepickerService.setCalendarDeadline = idx;
     } else {
-      this.setCalendarDeadline = null;
+      this.DatepickerService.setCalendarDeadline = null;
     }
   }
 

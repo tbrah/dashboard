@@ -27,18 +27,18 @@
       <p class="pointer" (click)="openCalendarStart(idx, item)"><i class="fa fa-calendar-plus-o"></i> Start date: <span class="detail-info">{{item.startdate | date:'dd-MM-yyyy'}}</span></p>
       <p class="pointer" (click)="openCalendarDeadline(idx, item)"><i class="fa fa-calendar-check-o"></i> Deadline: <span class="detail-info">{{item.deadline | date:'dd-MM-yyyy'}}</span></p>
 
-      <div class="big-calendar-wrapper" *ngIf="setCalendarStartDate === idx">
+      <div class="big-calendar-wrapper" *ngIf="DatepickerService.setCalendarStartDate === idx">
         <div class="calendar-wrapper">
           <h5>Pick a start date:</h5>
-          <datepicker [(ngModel)]="currentDate.startdate" [minDate]="minDate" [showWeeks]="true"></datepicker>
+          <datepicker [(ngModel)]="DatepickerService.currentDate.startdate" [minDate]="minDate" [showWeeks]="true"></datepicker>
           </div>
-        <div class="calendar-background" (click)="closeCalendar()"></div>
+        <div class="calendar-background" data-id="close" (click)="closeCalendar()"></div>
       </div>
 
-      <div class="big-calendar-wrapper" *ngIf="setCalendarDeadline === idx">
+      <div class="big-calendar-wrapper" *ngIf="DatepickerService.setCalendarDeadline === idx">
         <div class="calendar-wrapper">
           <h5>Pick a deadline:</h5>
-        <datepicker [(ngModel)]="currentDate.deadline" [minDate]="minDate" [showWeeks]="true"></datepicker>
+        <datepicker [(ngModel)]="DatepickerService.currentDate.deadline" [minDate]="minDate" [showWeeks]="true"></datepicker>
         </div>
         <div class="calendar-background" (click)="closeCalendar()"></div>
       </div>

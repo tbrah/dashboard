@@ -20,6 +20,11 @@ export class DatepickerService {
   };
   private opened: boolean = false;
 
+  /*Calendar variables*/
+  setCalendarStartDate = null;
+  setCalendarDeadline = null;
+  currentDate = [];
+
   public constructor() {
     (this.tomorrow = new Date()).setDate(this.tomorrow.getDate() + 1);
    (this.afterTomorrow = new Date()).setDate(this.tomorrow.getDate() + 2);

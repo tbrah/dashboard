@@ -10,7 +10,8 @@ export class UsersService {
   ];
 
   loggedUser = {name:"Whitney Jørgensen", picture:"whitney.jpg"};
-
+  currentSearch:any;
+  
   constructor() { }
 
 }

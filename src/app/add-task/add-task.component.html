@@ -1,43 +1,59 @@
+<div class="top-bar">
+  <div class="left"><h1><i class="fa fa-plus"></i> Create new task</h1></div>
+  <div class="right">
+    <p>Currently logged in as:</p>
+    <img class="profile-pic-circle" src="../../assets/{{UsersService.loggedUser.picture}}" tooltip="{{UsersService.loggedUser.name}}">
+    <div class="button-wrapper"><button (click)="cancelAdd()"><i class="fa fa-times"></i></button></div>
+  </div>
+</div>
+<hr>
 <div class="modal-header">
-  <input type="text" placeholder="Write your title here...">
-  <button type="button" class="close" (click)="PopupService.togglePopup()" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-  </button>
+  <input type="text" placeholder="Write your title here..." [(ngModel)]="newItem.title">
 </div>
       <div class="modal-body">
-        <textarea placeholder="Description goes here..."></textarea>
+        <textarea placeholder="Description goes here..." [(ngModel)]="newItem.description"></textarea>
         <hr>
         <div class="details-content">
           <div class="details-subcontainer">
-            <p><i class="fa fa-calendar-plus-o"></i> Start date: <span class="detail-info"></span></p>
-            <p><i class="fa fa-calendar-check-o"></i> Deadline: <span class="detail-info"></span></p>
+            <p class="pointer" data-id="startCalendar" (click)="toggleCalendar($event)"><i class="fa fa-calendar-plus-o"></i> Start date: <span class="detail-info">{{newItem.startdate | date:'dd-MM-yyyy'}}</span></p>
+            <p class="pointer" data-id="deadline" (click)="toggleCalendar($event)"><i class="fa fa-calendar-check-o"></i> Deadline: <span class="detail-info">{{newItem.deadline | date:'dd-MM-yyyy'}}</span></p>
 
-            <div class="big-calendar-wrapper">
+            <div class="big-calendar-wrapper" *ngIf="showCalendar === 'startCalendar'">
               <div class="calendar-wrapper">
                 <h5>Pick a start date:</h5>
-                <datepicker [minDate]="minDate" [showWeeks]="true"></datepicker>
+                <datepicker [(ngModel)]="newItem.startdate" [minDate]="minDate" [showWeeks]="true"></datepicker>
                 </div>
-              <div class="calendar-background" (click)="closeCalendar()"></div>
+              <div class="calendar-background" (click)="toggleCalendar($event)"></div>
             </div>
 
-            <div class="big-calendar-wrapper">
+            <div class="big-calendar-wrapper" *ngIf="showCalendar === 'deadline'">
               <div class="calendar-wrapper">
                 <h5>Pick a deadline:</h5>
-              <datepicker [minDate]="minDate" [showWeeks]="true"></datepicker>
+              <datepicker [(ngModel)]="newItem.deadline" [minDate]="minDate" [showWeeks]="true"></datepicker>
               </div>
-              <div class="calendar-background" (click)="closeCalendar()"></div>
+              <div class="calendar-background" (click)="toggleCalendar($event)"></div>
             </div>
 
 
           </div>
           <div class="details-subcontainer">
-            <p><i class="fa fa-money"></i> Budget: <span class="detail-info"><input type="number">DKK</span></p>
+            <p><i class="fa fa-money"></i> Budget: <span class="detail-info"><input type="number" [(ngModel)]="newItem.budget"></span></p>
             <p><i class="fa fa-print"></i> Print Protocol: <span class="detail-info"><i class="fa fa-check-circle" tooltip="Remember to use the print protocol"></i><i class="fa fa-times" tooltip="There is no print protocol"></i></span></p>
           </div>
-          <div class="details-subcontainer">
+          <div class="details-subcontainer no-padding">
+            <div class="search-field"><label><i class="fa fa-search"></i></label><input type="text" placeholder="Search Employees" [(ngModel)]="UsersService.currentSearch"><label class="drp-dwn"><i class="fa fa-sort-desc"></i></label></div>
+            <div class="p-drop-down">
+              <ul>
+                <li *ngFor="let user of UsersService.users">
+                  <img class="profile-pic-circle" src="../../assets/{{user.img}}"><p>{{user.username}}<br><span>{{user.position}}</span></p>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div class="details-subcontainer orderby">
-            <p>Ordered by:</p><img class="profile-pic-circle" src="./assets/{{UsersService.loggedUser.picture}}" tooltip="{{UsersService.loggedUser.name}}">
+          <div class="details-subcontainer no-padding">
+            <div *ngIf="newItem.participent">
+              <img *ngFor="let p of newItem.participent | search:UsersService.currentSearch" class="profile-pic-circle" src="../../assets/{{p.picture}}" tooltip="{{p.name}}">
+            </div>
           </div>
         </div>
       </div><!--modal-body-->

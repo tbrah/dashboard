@@ -15,4 +15,57 @@ export class AddTaskComponent implements OnInit {
   ngOnInit() {
   }
 
+  showCalendar = "";
+  newItem =
+      {id:null,
+      status:"",
+      title:"",
+      description:"",
+      startdate:"",
+      deadline:"",
+      budget:"",
+      print:false,
+      location:"",
+      papprove:false,
+      adminapprove:false,
+      participent:[],
+    participentpic:"",
+    orderby:{name:"", picture:""}
+    };
+
+  toggleCalendar(e){
+
+    if(e.srcElement.dataset.id === "startCalendar"){
+      this.showCalendar = e.srcElement.dataset.id;
+    } else if (e.srcElement.dataset.id === "deadline"){
+      this.showCalendar = e.srcElement.dataset.id;
+    } else {
+      this.showCalendar = "";
+    }
+  }
+
+  addItem(){
+
+  }
+
+  cancelAdd(){
+    this.newItem =
+        {id:null,
+        status:"",
+        title:"",
+        description:"",
+        startdate:"",
+        deadline:"",
+        budget:"",
+        print:false,
+        location:"",
+        papprove:false,
+        adminapprove:false,
+        participent:[{name:"", picture:""},],
+      participentpic:"",
+      orderby:{name:"", picture:""}
+      };
+    this.PopupService.togglePopup();
+  }
+
 }

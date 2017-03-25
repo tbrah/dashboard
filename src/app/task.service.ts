@@ -12,7 +12,7 @@ export class TaskService {
     budget:"500",
     print:false,
     location:"MainStorage/here/there/here/file.psd",
-    papprove:false,
+    papprove:true,
     adminapprove:false,
     participent:[{name:"John Doet", picture:"profpic.jpg"},
                 {name:"Kristy Cunt", picture:"kristy.png"},
