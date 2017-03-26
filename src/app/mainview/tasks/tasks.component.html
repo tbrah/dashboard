@@ -56,7 +56,7 @@
       <p *ngIf="item.papprove === true"><i class="fa fa-spinner fa-pulse fa-3x"></i> Waiting for admin approval: <span class="approve-wrapper"><i class="pointer fa fa-check"(click)="approve(item)" tooltip="Approve"></i><i class="pointer fa fa-times"(click)="deny(item)" tooltip="Deny"></i></span></p>
     </div>
     <div class="details-subcontainer orderby">
-      <p>Ordered by:</p><img class="profile-pic-circle" [class.white-profile-pic-circle]="item.status === 'done'" src="../../assets/{{item.orderby.picture}}" tooltip="{{item.orderby.name}}">
+      <p>Ordered by:</p><img class="profile-pic-circle" *ngFor="let orderby of item.orderby" [class.white-profile-pic-circle]="item.status === 'done'" src="../../assets/{{orderby.picture}}" tooltip="{{orderby.name}}">
     </div>
   </div>
 </div>

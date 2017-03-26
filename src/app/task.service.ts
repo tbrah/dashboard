@@ -4,7 +4,8 @@ import { Injectable } from '@angular/core';
 export class TaskService {
 
   tasks=[
-    {id:0, status:"active",
+    {id:0,
+    status:"active",
     title:"Testing",
     description:"testing description",
     startdate:"01-02-2017",
@@ -17,10 +18,10 @@ export class TaskService {
     participent:[{name:"John Doet", picture:"profpic.jpg"},
                 {name:"Kristy Cunt", picture:"kristy.png"},
               ],
-  participentpic:"profpic.jpg",
-  orderby:{name:"Whitney Jørgensen", picture:"whitney.jpg"}
+  orderby:[{name:"Whitney Jørgensen", picture:"whitney.jpg"}]
 },
-{id:1, status:"on hold",
+{id:1,
+status:"on hold",
 title:"this is task number 2",
 description:"testing description testing descriptiontesting descriptiontesting descriptiontesting descriptiontesting descriptiontesting descriptiontesting description",
 startdate:"01-02-2017",
@@ -32,8 +33,7 @@ papprove:false,
 adminapprove:false,
 participent:[{name:"John Doet", picture:"profpic.jpg"},
           ],
-participentpic:"profpic.jpg",
-orderby:{name:"Whitney Jørgensen", picture:"whitney.jpg"}
+orderby:[{name:"Whitney Jørgensen", picture:"whitney.jpg"}]
 },
   ]
 

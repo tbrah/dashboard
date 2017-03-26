@@ -23,6 +23,7 @@ import { TasksComponent } from './mainview/tasks/tasks.component';
 import { PopupComponent } from './popup/popup.component';
 import { SearchPipe } from './search.pipe';
 import { AddTaskComponent } from './add-task/add-task.component';
+import { SearchEmployeePipe } from './search-employee.pipe';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { AddTaskComponent } from './add-task/add-task.component';
     PopupComponent,
     SearchPipe,
     AddTaskComponent,
+    SearchEmployeePipe,
   ],
   imports: [
     BrowserModule,

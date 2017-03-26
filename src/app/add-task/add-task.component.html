@@ -37,23 +37,24 @@
 
           </div>
           <div class="details-subcontainer">
-            <p><i class="fa fa-money"></i> Budget: <span class="detail-info"><input type="number" [(ngModel)]="newItem.budget"></span></p>
+            <p><i class="fa fa-money"></i> Budget: <span class="detail-info"><input class="budget" type="number" [(ngModel)]="newItem.budget"></span></p>
             <p><i class="fa fa-print"></i> Print Protocol: <span class="detail-info"><i class="fa fa-check-circle" tooltip="Remember to use the print protocol"></i><i class="fa fa-times" tooltip="There is no print protocol"></i></span></p>
           </div>
           <div class="details-subcontainer no-padding">
-            <div class="search-field"><label><i class="fa fa-search"></i></label><input type="text" placeholder="Search Employees" [(ngModel)]="UsersService.currentSearch"><label class="drp-dwn"><i class="fa fa-sort-desc"></i></label></div>
-            <div class="p-drop-down">
+            <div class="search-field"><label><i class="fa fa-search"></i></label><input type="text" placeholder="Search Employees" [(ngModel)]="UsersService.currentSearch" (focus)="focusfun()"><label class="drp-dwn"><i class="fa fa-sort-desc"></i></label></div>
+            <div class="p-drop-down" *ngIf="showEmplList">
               <ul>
-                <li *ngFor="let user of UsersService.users">
-                  <img class="profile-pic-circle" src="../../assets/{{user.img}}"><p>{{user.username}}<br><span>{{user.position}}</span></p>
+                <li *ngFor="let user of UsersService.users | searchEmployee:UsersService.currentSearch" (click)="selectedEmpl(user)">
+                  <img class="profile-pic-circle" src="../../assets/{{user.picture}}"><p>{{user.name}}<br><span>{{user.position}}</span></p>
                 </li>
               </ul>
             </div>
           </div>
           <div class="details-subcontainer no-padding">
             <div *ngIf="newItem.participent">
-              <img *ngFor="let p of newItem.participent | search:UsersService.currentSearch" class="profile-pic-circle" src="../../assets/{{p.picture}}" tooltip="{{p.name}}">
+              <img *ngFor="let p of newItem.participent" class="profile-pic-circle" src="../../assets/{{p.picture}}" tooltip="{{p.name}}">
             </div>
           </div>
         </div>
+        <button class="btn btn-success" (click)="addItem()">Save</button>
       </div><!--modal-body-->

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PopupService } from '../popup.service';
 import { UsersService } from '../users.service';
+import { TaskService } from '../task.service';
 import { DatepickerService } from '../datepicker.service';
 
 @Component({
@@ -10,7 +11,7 @@ import { DatepickerService } from '../datepicker.service';
 })
 export class AddTaskComponent implements OnInit {
 
-  constructor(private PopupService:PopupService, private UsersService:UsersService, private DatepickerService:DatepickerService) { }
+  constructor(private PopupService:PopupService, private UsersService:UsersService, private DatepickerService:DatepickerService, private TaskService:TaskService) { }
 
   ngOnInit() {
   }
@@ -18,7 +19,7 @@ export class AddTaskComponent implements OnInit {
   showCalendar = "";
   newItem =
       {id:null,
-      status:"",
+      status:"active",
       title:"",
       description:"",
       startdate:"",
@@ -29,8 +30,7 @@ export class AddTaskComponent implements OnInit {
       papprove:false,
       adminapprove:false,
       participent:[],
-    participentpic:"",
-    orderby:{name:"", picture:""}
+    orderby:[]
     };
 
   toggleCalendar(e){
@@ -45,13 +45,15 @@ export class AddTaskComponent implements OnInit {
   }
 
   addItem(){
-
+    this.newItem.orderby.push(this.UsersService.loggedUser);
+    this.TaskService.tasks.push(this.newItem);
+    this.cancelAdd();
   }
 
   cancelAdd(){
     this.newItem =
         {id:null,
-        status:"",
+        status:"active",
         title:"",
         description:"",
         startdate:"",
@@ -61,11 +63,20 @@ export class AddTaskComponent implements OnInit {
         location:"",
         papprove:false,
         adminapprove:false,
-        participent:[{name:"", picture:""},],
-      participentpic:"",
-      orderby:{name:"", picture:""}
+        participent:[],
+      orderby:[]
       };
     this.PopupService.togglePopup();
+  }
+
+  showEmplList = false;
+
+  focusfun(){
+    this.showEmplList = !this.showEmplList;
+  }
+
+  selectedEmpl(user){
+    this.newItem.participent.push(user);
   }
 
 }
