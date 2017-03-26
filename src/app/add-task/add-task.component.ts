@@ -76,7 +76,8 @@ export class AddTaskComponent implements OnInit {
   }
 
   selectedEmpl(user){
-    this.newItem.participent.push(user);
+      this.newItem.participent.push(user);
+    console.log(this.newItem.participent);
   }
 
 }

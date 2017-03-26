@@ -14,7 +14,7 @@
         <textarea placeholder="Description goes here..." [(ngModel)]="newItem.description"></textarea>
         <hr>
         <div class="details-content">
-          <div class="details-subcontainer">
+          <div class="details-subcontainer calendar-container">
             <p class="pointer" data-id="startCalendar" (click)="toggleCalendar($event)"><i class="fa fa-calendar-plus-o"></i> Start date: <span class="detail-info">{{newItem.startdate | date:'dd-MM-yyyy'}}</span></p>
             <p class="pointer" data-id="deadline" (click)="toggleCalendar($event)"><i class="fa fa-calendar-check-o"></i> Deadline: <span class="detail-info">{{newItem.deadline | date:'dd-MM-yyyy'}}</span></p>
 
@@ -50,11 +50,11 @@
               </ul>
             </div>
           </div>
-          <div class="details-subcontainer no-padding">
+          <div class="details-subcontainer participant-container no-padding">
             <div *ngIf="newItem.participent">
               <img *ngFor="let p of newItem.participent" class="profile-pic-circle" src="../../assets/{{p.picture}}" tooltip="{{p.name}}">
             </div>
           </div>
         </div>
-        <button class="btn btn-success" (click)="addItem()">Save</button>
+        <button class="btn btn-success save" (click)="addItem()">Save</button>
       </div><!--modal-body-->

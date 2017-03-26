@@ -71,6 +71,15 @@ textarea{
     float:right;
     margin-left:10px;
   }
+  .calendar-container{
+      width:220px;
+  }
+  .participant-container{
+    margin-left:auto;
+    margin-right:auto;
+    padding-left:5px!important;
+    padding-right:5px!important;
+  }
   .details-subcontainer{
     padding-left:30px;
     padding-right:30px;
@@ -169,4 +178,10 @@ textarea{
       }
     }
   }
+}
+.save{
+  margin-top:35px;
+  display:block;
+  margin-left:auto;
+  margin-right:auto;
 }

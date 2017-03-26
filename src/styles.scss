@@ -14,6 +14,13 @@ p{
 h1{
   color:$ordbogen-green;
 }
+.btn-success{
+  background-color:$ordbogen-green;
+}
+.btn-success:hover{
+  opacity:0.8;
+  background-color:$ordbogen-green;
+}
 [hidden]{
   display:none!important;
 }
