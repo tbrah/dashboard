@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UsersService } from '../users.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -9,7 +10,7 @@ export class SidenavComponent implements OnInit {
 
   profileNavCtrl:boolean = false;
 
-  constructor() {
+  constructor(private UsersService:UsersService) {
 
   }
 

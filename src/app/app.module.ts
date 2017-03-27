@@ -7,6 +7,7 @@ import { AccordionModule } from 'ng2-bootstrap';
 import { TooltipModule } from 'ng2-bootstrap';
 import { ModalModule } from 'ng2-bootstrap';
 import { DatepickerModule } from 'ng2-bootstrap';
+import { DropdownModule } from 'ng2-bootstrap';
 
 import { AppComponent } from './app.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
@@ -47,6 +48,7 @@ import { SearchEmployeePipe } from './search-employee.pipe';
     TooltipModule.forRoot(),
     ModalModule.forRoot(),
     DatepickerModule.forRoot(),
+    DropdownModule.forRoot(),
 
   ],
   providers: [

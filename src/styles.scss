@@ -17,7 +17,7 @@ h1{
 .btn-success{
   background-color:$ordbogen-green;
 }
-.btn-success:hover{
+.btn-success:hover, .btn-success:focus, .btn-success:active:focus{
   opacity:0.8;
   background-color:$ordbogen-green;
 }
@@ -36,7 +36,7 @@ h1{
   display:inline-block;
   border-radius:50%;
   width:40px;
-  border: 3px solid rgba(0, 163, 136, 0.28);
+  border: 3px solid $picture-border-green;
   margin-left:10px;
   &:hover{
     border: 3px solid $picture-border-white;
@@ -105,6 +105,6 @@ h1{
 }
 @media (min-width:992px){
   .modal-lg{
-    width:980px!important;
+    width:1068px!important;
   }
 }

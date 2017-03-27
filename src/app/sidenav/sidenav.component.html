@@ -3,10 +3,10 @@
       <img class="logo" src="../../assets/white-logo.svg">
       <hr>
       <div class="profile-area">
-        <img src="../../assets/whitney.jpg">
+        <img src="../../assets/{{UsersService.loggedUser.picture}}">
         <div class="tag-area" (click)="toggleProfileNav()">
-              <h5>Whitney Jørgensen</h5> <b class="caret" [class.caret-switch]="profileNavCtrl"></b>
-              <h6>Head of Talent Recruitment</h6>
+              <h5>{{UsersService.loggedUser.name}}</h5> <b class="caret" [class.caret-switch]="profileNavCtrl"></b>
+              <h6>{{UsersService.loggedUser.position}}</h6>
               <ul class="nav" [class.opennav]="profileNavCtrl">
                 <li><a href=""><p>my profile</p></a></li>
                 <li><a href=""><p>edit profile</p></a></li>

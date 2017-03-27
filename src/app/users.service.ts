@@ -9,7 +9,7 @@ export class UsersService {
     {id: 2, name : "Kristy Cunt" , position : "Software Developer" , picture: "kristy.png", admin: false,},
   ];
 
-  loggedUser = {id: 0, name : "Whitney Jørgensen", position : "Head of Talent Recruitment" , picture: "whitney.jpg", admin: true,};
+  loggedUser = this.users[0];
   currentSearch:any;
 
   constructor() { }

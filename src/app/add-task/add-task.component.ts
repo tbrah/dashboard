@@ -76,8 +76,22 @@ export class AddTaskComponent implements OnInit {
   }
 
   selectedEmpl(user){
-      this.newItem.participent.push(user);
-    console.log(this.newItem.participent);
+      if(!this.newItem.participent.includes(user)){
+        this.newItem.participent.push(user);
+      }
+  }
+
+  deleteP(p){
+    this.newItem.participent.splice(this.newItem.participent.indexOf(p), 1);
+  }
+
+  togglePrint(e){
+    console.log(e.srcElement.innerHTML);
+    if(e.srcElement.innerHTML === "No"){
+      this.newItem.print = false;
+    } else {
+      this.newItem.print = true;
+    }
   }
 
 }

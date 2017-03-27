@@ -15,8 +15,8 @@
         <hr>
         <div class="details-content">
           <div class="details-subcontainer calendar-container">
-            <p class="pointer" data-id="startCalendar" (click)="toggleCalendar($event)"><i class="fa fa-calendar-plus-o"></i> Start date: <span class="detail-info">{{newItem.startdate | date:'dd-MM-yyyy'}}</span></p>
-            <p class="pointer" data-id="deadline" (click)="toggleCalendar($event)"><i class="fa fa-calendar-check-o"></i> Deadline: <span class="detail-info">{{newItem.deadline | date:'dd-MM-yyyy'}}</span></p>
+            <p class="pointer" data-id="startCalendar" (click)="toggleCalendar($event)"><i class="fa fa-calendar-plus-o"></i> Start date: <span class="detail-info" data-id="startCalendar">{{newItem.startdate | date:'dd-MM-yyyy'}}<span *ngIf="!newItem.startdate" data-id="startCalendar">Pick a date</span></span></p>
+            <p class="pointer" data-id="deadline" (click)="toggleCalendar($event)"><i class="fa fa-calendar-check-o"></i> Deadline: <span class="detail-info" data-id="deadline">{{newItem.deadline | date:'dd-MM-yyyy'}}<span *ngIf="!newItem.deadline" data-id="deadline">Pick a date</span></span></p>
 
             <div class="big-calendar-wrapper" *ngIf="showCalendar === 'startCalendar'">
               <div class="calendar-wrapper">
@@ -38,10 +38,21 @@
           </div>
           <div class="details-subcontainer">
             <p><i class="fa fa-money"></i> Budget: <span class="detail-info"><input class="budget" type="number" [(ngModel)]="newItem.budget"></span></p>
-            <p><i class="fa fa-print"></i> Print Protocol: <span class="detail-info"><i class="fa fa-check-circle" tooltip="Remember to use the print protocol"></i><i class="fa fa-times" tooltip="There is no print protocol"></i></span></p>
+            <p><i class="fa fa-print"></i> Print Protocol: 
+            <span class="detail-info">
+              <div class="btn-group" dropdown>
+                <button id="single-button" type="button" class="btn print-btn" dropdownToggle>
+                  <span *ngIf="newItem.print === false">No</span><span *ngIf="newItem.print === true">Yes</span><span class="caret"></span>
+                </button>
+                <ul dropdownMenu role="menu" aria-labelledby="single-button">
+                  <li role="menuitem"><a class="dropdown-item" href="#" (click)="togglePrint($event)">Yes</a></li>
+                  <li role="menuitem"><a class="dropdown-item" href="#" (click)="togglePrint($event)">No</a></li>
+                </ul>
+              </div>
+            </span></p>
           </div>
           <div class="details-subcontainer no-padding">
-            <div class="search-field"><label><i class="fa fa-search"></i></label><input type="text" placeholder="Search Employees" [(ngModel)]="UsersService.currentSearch" (focus)="focusfun()"><label class="drp-dwn"><i class="fa fa-sort-desc"></i></label></div>
+            <div class="search-field"><p>Assign participants:</p><div class="search-wrapper"><label><i class="fa fa-search"></i></label><input type="text" placeholder="Search Employees" [(ngModel)]="UsersService.currentSearch" (focus)="focusfun()"><label class="drp-dwn"><i class="fa fa-sort-desc"></i></label></div></div>
             <div class="p-drop-down" *ngIf="showEmplList">
               <ul>
                 <li *ngFor="let user of UsersService.users | searchEmployee:UsersService.currentSearch" (click)="selectedEmpl(user)">
@@ -50,11 +61,13 @@
               </ul>
             </div>
           </div>
-          <div class="details-subcontainer participant-container no-padding">
-            <div *ngIf="newItem.participent">
-              <img *ngFor="let p of newItem.participent" class="profile-pic-circle" src="../../assets/{{p.picture}}" tooltip="{{p.name}}">
-            </div>
-          </div>
         </div>
-        <button class="btn btn-success save" (click)="addItem()">Save</button>
+        <button class="btn btn-success save" (click)="addItem()"><i class="fa fa-clipboard"></i> Save</button>
+        <div class="participant-container">
+            <div *ngIf="newItem.participent">
+              <div class="p-obj" *ngFor="let p of newItem.participent"><img class="profile-pic-circle" src="../../assets/{{p.picture}}" tooltip="{{p.name}}" placement="left">
+                <button class="close" (click)="deleteP(p)"><i class="fa fa-times"></i></button>
+              </div>
+            </div>
+        </div>
       </div><!--modal-body-->
