@@ -89,7 +89,6 @@ export class AddTaskComponent implements OnInit {
   }
 
   togglePrint(e){
-    console.log(e.srcElement.innerHTML);
     if(e.srcElement.innerHTML === "No"){
       this.newItem.print = false;
     } else {

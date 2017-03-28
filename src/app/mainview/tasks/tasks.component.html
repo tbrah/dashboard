@@ -16,6 +16,7 @@
         <p class="pointer" (click)="enableEdit(item, idx)" *ngIf="editActive === idx"><i class="fa fa-save"></i> Save changes</p>
         <p class="pointer" *ngIf="item.status === 'done'" (click)="reopen(item)"><i class="fa fa-refresh"></i> Re-open</p>
         <p class="pointer" *ngIf="this.TaskService.deleteActivation === true" (click)="delete(item, idx)"><i class="fa fa-trash-o"></i> Delete</p>
+        <p class="" *ngIf="item.adminapprove">Task completed and approved on: <b>{{DatepickerService.dt | date: 'dd-MM-yyyy'}}</b></p>
       </div>
   <p class="description" [hidden]="editActive === idx">{{item.description}}</p>
   <textarea class="edit-description" *ngIf="editActive === idx" [(ngModel)]="currentTask.description">{{item.description}}</textarea>

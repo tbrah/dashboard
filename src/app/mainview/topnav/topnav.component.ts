@@ -23,40 +23,36 @@ export class TopnavComponent implements OnInit {
     }
   }
 
-  toggleButton = true;
-  storedText:string;
+  toggleButton = false;
+  storedValue:string;
 
   setTab(e){
 
-    let button = e.srcElement.innerHTML.toLowerCase();
+    let button = e.srcElement.innerHTML.toLowerCase(); // active, on hold, done
 
-    //toggling the button, check if it is already selected.
-    if (this.storedText === button){
-      this.toggleButton = !this.toggleButton; // click off button
-    }
-
-    console.log(this.toggleButton);
-
-    this.storedText = button;
-
-
-
-    console.log("CurrentTab = " + this.TaskService.currentTab);
-
-    if(button === "active"){
-      this.TaskService.currentTab = "active";
+    // Checking if the same button was already active.
+    if(this.toggleButton === true && this.storedValue === button){
+      this.TaskService.currentTab = "all";
+      this.toggleButton = false;
+      // Re-setting the storedValue to prevent getting stuck above ^.
+      this.storedValue = "";
+      // Checking what button is clicked and changing the filter.
+    } else if (button === "active"){ 
+      this.TaskService.currentTab = "active"; 
+      this.storedValue = button;     
     } else if (button === "on hold"){
       this.TaskService.currentTab = "on hold";
-    } else if (button === "done"){
+      this.storedValue = button;
+    } else if (button === "done") {
       this.TaskService.currentTab = "done";
-    }
-    
-    if (this.toggleButton === true){
-      this.TaskService.currentTab = "all";
+      this.storedValue = button;
     }
 
-    console.log("Ending state = " + this.TaskService.currentTab);
-
+    if(this.storedValue === button){
+      this.toggleButton = true;
+    } else {
+      this.toggleButton = false;
+    }
   }
 
 }
