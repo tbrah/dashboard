@@ -23,4 +23,40 @@ export class TopnavComponent implements OnInit {
     }
   }
 
+  toggleButton = true;
+  storedText:string;
+
+  setTab(e){
+
+    let button = e.srcElement.innerHTML.toLowerCase();
+
+    //toggling the button, check if it is already selected.
+    if (this.storedText === button){
+      this.toggleButton = !this.toggleButton; // click off button
+    }
+
+    console.log(this.toggleButton);
+
+    this.storedText = button;
+
+
+
+    console.log("CurrentTab = " + this.TaskService.currentTab);
+
+    if(button === "active"){
+      this.TaskService.currentTab = "active";
+    } else if (button === "on hold"){
+      this.TaskService.currentTab = "on hold";
+    } else if (button === "done"){
+      this.TaskService.currentTab = "done";
+    }
+    
+    if (this.toggleButton === true){
+      this.TaskService.currentTab = "all";
+    }
+
+    console.log("Ending state = " + this.TaskService.currentTab);
+
+  }
+
 }

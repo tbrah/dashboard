@@ -25,6 +25,9 @@ import { PopupComponent } from './popup/popup.component';
 import { SearchPipe } from './search.pipe';
 import { AddTaskComponent } from './add-task/add-task.component';
 import { SearchEmployeePipe } from './search-employee.pipe';
+import { OrderByIdPipe } from './order-by-id.pipe';
+import { OrderByDonePipe } from './order-by-done.pipe';
+import { TabFilterPipe } from './tab-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -38,6 +41,9 @@ import { SearchEmployeePipe } from './search-employee.pipe';
     SearchPipe,
     AddTaskComponent,
     SearchEmployeePipe,
+    OrderByIdPipe,
+    OrderByDonePipe,
+    TabFilterPipe,
   ],
   imports: [
     BrowserModule,

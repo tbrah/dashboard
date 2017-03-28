@@ -26,7 +26,7 @@ export class AddTaskComponent implements OnInit {
       deadline:"",
       budget:"",
       print:false,
-      location:"",
+      location:"Not uploaded",
       papprove:false,
       adminapprove:false,
       participent:[],
@@ -45,6 +45,9 @@ export class AddTaskComponent implements OnInit {
   }
 
   addItem(){
+    let i = this.TaskService.tasks.length - 1;
+    i++;
+    this.newItem.id = i;
     this.newItem.orderby.push(this.UsersService.loggedUser);
     this.TaskService.tasks.push(this.newItem);
     this.cancelAdd();
@@ -60,7 +63,7 @@ export class AddTaskComponent implements OnInit {
         deadline:"",
         budget:"",
         print:false,
-        location:"",
+        location:"Not uploaded",
         papprove:false,
         adminapprove:false,
         participent:[],

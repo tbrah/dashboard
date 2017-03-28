@@ -1,4 +1,4 @@
-<div class="task-wrapper" *ngFor="let item of TaskService.tasks | search:TaskService.currentSearch let idx = index" [class.task-done]="item.adminapprove === true">
+<div class="task-wrapper" *ngFor="let item of TaskService.tasks | search:TaskService.currentSearch | tabFilter:TaskService.currentTab | orderById | orderByDone let idx = index" [class.task-done]="item.adminapprove === true">
     <div class="header">
       <h1 [hidden]="editActive === idx">{{item.title}}</h1>
       <input class="edit-header" type="text" value="{{item.title}}" *ngIf="editActive === idx" [(ngModel)]="currentTask.title">
@@ -51,8 +51,7 @@
       <p *ngIf="editActive === idx"><i class="fa fa-print"></i> Print Protocol: <span class="detail-info" tooltip="Select if print protocol is required" placement="bottom"><i class="fa fa-check-circle pointer edit-print" [class.selected-print]="item.print" (click)="printSelector($event, item)"></i><i class="fa fa-times pointer edit-print" [class.selected-print]="!item.print" (click)="printSelector($event, item)"></i></span></p>
     </div>
     <div class="details-subcontainer">
-      <p [style.padding-top]="item.papprove ? '0px':'15px'" [hidden]="editActive === idx"><i class="fa fa-map-marker"></i> {{item.location}}</p>
-      <p [style.padding-top]="item.papprove ? '0px':'15px'" *ngIf="editActive === idx"><i class="fa fa-map-marker"></i> <input value="{{item.location}}" [(ngModel)]="item.location"></p>
+      <p [style.padding-top]="item.papprove ? '0px':'15px'"><i class="fa fa-map-marker"></i><input *ngIf="editActive === idx" value="{{item.location}}" [(ngModel)]="item.location"> <span [hidden]="editActive === idx">{{item.location}}</span></p>
       <p *ngIf="item.papprove === true"><i class="fa fa-spinner fa-pulse fa-3x"></i> Waiting for admin approval: <span class="approve-wrapper"><i class="pointer fa fa-check"(click)="approve(item)" tooltip="Approve"></i><i class="pointer fa fa-times"(click)="deny(item)" tooltip="Deny"></i></span></p>
     </div>
     <div class="details-subcontainer orderby">

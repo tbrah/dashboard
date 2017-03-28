@@ -3,6 +3,15 @@
     <div class="left-content">
       <h5>Welcome <span class="green">{{UsersService.loggedUser.name}}</span></h5>
       <div class="search-field"><label><i class="fa fa-search"></i></label><input type="text" placeholder="Search"[(ngModel)]="TaskService.currentSearch"></div>
+      <div class="big-btn-wrapper">
+        <button>My tasks</button>
+        <button>All tasks</button>
+      </div>
+      <div class="small-btn-wrapper">
+        <button (click)="setTab($event)">Active</button>
+        <button (click)="setTab($event)">On hold</button>
+        <button (click)="setTab($event)">Done</button>
+      </div>
     </div>
     <div class="right-content">
       <p><i class="fa fa-lock admin"></i> Admin Panel:</p>

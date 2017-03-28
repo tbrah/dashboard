@@ -35,6 +35,48 @@
           }
         }
       }
+      .big-btn-wrapper{
+          display:inline-block;
+          padding-left:10px;
+          padding-right:10px;
+          border-left: 1px solid $light-gray;
+          border-right: 1px solid $light-gray;
+          button{
+            color:$gray-font;
+            background-color:transparent;
+            border-radius:4px;
+            box-shadow:$default-shadow;
+            border:none;
+            height:40px;
+            font-size:12px;
+            padding-left:20px;
+            padding-right:20px;
+            &:last-child{
+              margin-left:10px;
+            }
+          }
+      }
+      .small-btn-wrapper{
+        display:inline-block;
+        padding-left:10px;
+        padding-right:10px;
+        border-right:1px solid $light-gray;
+        button{
+          font-size:12px;
+          color:$gray-font;
+          background-color:transparent;
+          border-radius:6px;
+          box-shadow:$default-shadow;
+          border:none;
+          padding-left:10px;
+          padding-right:10px;
+          height:30px;
+          margin-left:5px;
+          &:first-child{
+            margin-left:0;
+          }
+        }
+      }
       h5{
         margin-top:5px;
         display:inline-block;
