@@ -27,7 +27,6 @@ export class TopnavComponent implements OnInit {
   storedValue:string;
 
   setTab(e){
-
     let button = e.srcElement.innerHTML.toLowerCase(); // active, on hold, done
 
     // Checking if the same button was already active.

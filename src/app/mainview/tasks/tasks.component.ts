@@ -18,7 +18,7 @@ export class TasksComponent implements OnInit {
 
 
   constructor(private TaskService:TaskService, private UsersService:UsersService, private PopupService:PopupService, private DatepickerService:DatepickerService) {
-  }
+}
 
   ngOnInit() {
   }
@@ -46,10 +46,13 @@ export class TasksComponent implements OnInit {
     let i = idx;
     this.TaskService.tasks.splice(i, 1);
   }
-  approve(item){
+  adminApprove(item){
     item.adminapprove = true;
     item.papprove = false;
     item.status = "done";
+  }
+  pApprove(item){
+    item.papprove = true;
   }
   deny(item){
     item.adminapprove = false;
@@ -72,20 +75,28 @@ export class TasksComponent implements OnInit {
     this.DatepickerService.setCalendarDeadline = null;
   }
   openCalendarStart(idx, item){
-    this.DatepickerService.currentDate = item;
-    if(this.DatepickerService.setCalendarStartDate === null){
-      this.DatepickerService.setCalendarStartDate = idx;
-    } else {
-      this.DatepickerService.setCalendarStartDate = null;
+
+    if(this.UsersService.loggedUser.admin){
+        this.DatepickerService.currentDate = item;
+      if(this.DatepickerService.setCalendarStartDate === null){
+        this.DatepickerService.setCalendarStartDate = idx;
+      } else {
+        this.DatepickerService.setCalendarStartDate = null;
+      }
     }
+
   }
   openCalendarDeadline(idx, item){
-    this.DatepickerService.currentDate = item;
-    if(this.DatepickerService.setCalendarDeadline === null){
-      this.DatepickerService.setCalendarDeadline = idx;
-    } else {
-      this.DatepickerService.setCalendarDeadline = null;
+    if(this.UsersService.loggedUser.admin){
+        this.DatepickerService.currentDate = item;
+      if(this.DatepickerService.setCalendarDeadline === null){
+        this.DatepickerService.setCalendarDeadline = idx;
+      } else {
+        this.DatepickerService.setCalendarDeadline = null;
+      }
     }
+
   }
+
 
 }

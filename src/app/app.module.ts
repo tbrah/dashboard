@@ -28,6 +28,7 @@ import { SearchEmployeePipe } from './search-employee.pipe';
 import { OrderByIdPipe } from './order-by-id.pipe';
 import { OrderByDonePipe } from './order-by-done.pipe';
 import { TabFilterPipe } from './tab-filter.pipe';
+import { UserPipe } from './user.pipe';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { TabFilterPipe } from './tab-filter.pipe';
     OrderByIdPipe,
     OrderByDonePipe,
     TabFilterPipe,
+    UserPipe,
   ],
   imports: [
     BrowserModule,

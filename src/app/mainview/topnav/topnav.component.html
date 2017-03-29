@@ -13,7 +13,7 @@
         <button [class.active-btn]="storedValue === 'done'" (click)="setTab($event)">Done</button>
       </div>
     </div>
-    <div class="right-content">
+    <div class="right-content" *ngIf="UsersService.loggedUser.admin">
       <p><i class="fa fa-lock admin"></i> Admin Panel:</p>
       <p class="pointer plus" tooltip="Add a new task" placement="bottom" (click)="PopupService.togglePopup()"><i class="fa fa-plus-circle fa-fw"></i></p>
       <p class="pointer" tooltip="Toggle delete buttons" placement="left" (click)="toggleDelete()"><i class="fa fa-trash-o fa-fw"></i></p>

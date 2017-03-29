@@ -41,6 +41,7 @@ orderby:[{name:"Whitney Jørgensen", picture:"whitney.jpg"}]
   deleteActivation = false;
   currentTab = "all";
 
-  constructor() { }
+
+  
 
 }
