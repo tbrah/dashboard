@@ -8,14 +8,23 @@ export class UserPipe implements PipeTransform {
 
   transform(array: any, currentUser: any): any {
 
-    return array.filter(function bruh(array){
-      return array.participent.filter(function(array){
-        console.log("haystack array " + array.name.toLowerCase());
-        console.log("current user " + currentUser.toLowerCase());
-        console.log(array.name.toLowerCase().includes(currentUser.toLowerCase()));
-        return array.name.toLowerCase().includes(currentUser.toLowerCase());
-      })
-    })
+    let ret = [];
+
+    if(currentUser === null) return array;
+
+    if(currentUser.admin === true) return array;
+
+    array.forEach(function (item){
+      let ret1 = item.participent.filter(function (e){
+        return e.name.toLowerCase().includes(currentUser.name.toLowerCase());
+      });
+
+       if(ret1.length > 0){
+         ret.push(item);
+       }
+    });
+   
+    return ret;
 
   }
 }

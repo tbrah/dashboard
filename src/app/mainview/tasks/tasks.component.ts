@@ -15,6 +15,7 @@ export class TasksComponent implements OnInit {
   editActive:number;
   currentTask = [];
   undoChanges = []; // {id:0, title: "testing", description: ""}
+  myTask = null;
 
 
   constructor(private TaskService:TaskService, private UsersService:UsersService, private PopupService:PopupService, private DatepickerService:DatepickerService) {
@@ -97,6 +98,14 @@ export class TasksComponent implements OnInit {
       }
     }
 
+  }
+
+  toggleMyTask(){
+    if(this.myTask === null){
+      this.myTask = this.UsersService.loggedUser;
+    } else {
+      this.myTask = null;
+    }
   }
 
 
