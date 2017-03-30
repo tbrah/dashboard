@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
+import { NavServiceService } from '../nav-service.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -10,7 +11,7 @@ export class SidenavComponent implements OnInit {
 
   profileNavCtrl:boolean = false;
 
-  constructor(private UsersService:UsersService) {
+  constructor(private UsersService:UsersService, private NavService:NavServiceService) {
 
   }
 
@@ -24,4 +25,21 @@ export class SidenavComponent implements OnInit {
       this.profileNavCtrl = false;
     }
   }
+
+  
+
+  selectMenu(menu){
+    if (menu === "home"){
+      this.NavService.selectedNav = "home";
+    } if (menu === "calendar"){
+      this.NavService.selectedNav = "calendar";
+    } if (menu === "tasks"){
+      this.NavService.selectedNav = "tasks";
+    } if (menu === "styleguide"){
+      this.NavService.selectedNav = "styleguide";
+    } if (menu === "print checklist"){
+      this.NavService.selectedNav = "print checklist";
+    }
+  }
+
 }

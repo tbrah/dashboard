@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../task.service';
+import { NavServiceService } from '../nav-service.service';
 
 @Component({
   selector: 'app-mainview',
@@ -9,7 +10,7 @@ import { TaskService } from '../task.service';
 export class MainviewComponent implements OnInit {
 
 
-  constructor(private TaskService:TaskService) { }
+  constructor(private TaskService:TaskService, private NavService:NavServiceService) { }
 
   ngOnInit() {
   }

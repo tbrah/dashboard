@@ -1,11 +1,12 @@
 <div class="wrapper">
   <app-topnav></app-topnav>
-  <div class="main-view">
+  <div class="main-view" [class.no-padding-view]="NavService.selectedNav === 'styleguide'">
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <app-tasks></app-tasks>
+          <app-tasks *ngIf="NavService.selectedNav === 'tasks'"></app-tasks>
           <app-popup></app-popup>
+          <app-styleguide *ngIf="NavService.selectedNav === 'styleguide'"></app-styleguide>
         </div>
       </div>
     </div>

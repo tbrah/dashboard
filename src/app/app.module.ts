@@ -19,6 +19,8 @@ import { PostsService } from './posts.service';
 import { TaskService } from './task.service';
 import { PopupService } from './popup.service';
 import { DatepickerService } from './datepicker.service';
+import { NotificationService } from './notification.service';
+import { NavServiceService } from './nav-service.service';
 import { PostComponent } from './mainview/post/post.component';
 import { TasksComponent } from './mainview/tasks/tasks.component';
 import { PopupComponent } from './popup/popup.component';
@@ -29,6 +31,8 @@ import { OrderByIdPipe } from './order-by-id.pipe';
 import { OrderByDonePipe } from './order-by-done.pipe';
 import { TabFilterPipe } from './tab-filter.pipe';
 import { UserPipe } from './user.pipe';
+import { NotiPipePipe } from './noti-pipe.pipe';
+import { StyleguideComponent } from './mainview/styleguide/styleguide.component';
 
 @NgModule({
   declarations: [
@@ -46,6 +50,8 @@ import { UserPipe } from './user.pipe';
     OrderByDonePipe,
     TabFilterPipe,
     UserPipe,
+    NotiPipePipe,
+    StyleguideComponent,
   ],
   imports: [
     BrowserModule,
@@ -65,6 +71,8 @@ import { UserPipe } from './user.pipe';
     TaskService,
     PopupService,
     DatepickerService,
+    NotificationService,
+    NavServiceService,
   ],
   bootstrap: [AppComponent]
 })

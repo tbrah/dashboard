@@ -12,8 +12,8 @@
         <p class="pointer" tooltip="Put this task on hold" *ngIf="item.status === 'active' && UsersService.loggedUser.admin" (click)="setHold(item)"><i class="fa fa-pause fa-fw"></i> Put on hold</p>
         <p class="pointer" tooltip="Activate this task again" *ngIf="item.status === 'on hold' && UsersService.loggedUser.admin" (click)="setActive(item)"><i class="fa fa-play fa-fw"></i> Set to active</p>
         <p *ngIf="item.papprove === true"><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i> Waiting for admin approval</p>
-        <p class="pointer" [hidden]="editActive === idx" *ngIf="UsersService.loggedUser.admin" (click)="enableEdit(item, idx)"><i class="fa fa-pencil-square-o fa-fw"></i> Edit text</p>
-        <p class="pointer save-changes" (click)="enableEdit(item, idx)" *ngIf="editActive === idx"><i class="fa fa-save"></i><b> Save changes</b></p>
+        <p class="pointer" [hidden]="editActive === idx" *ngIf="UsersService.loggedUser.admin" (click)="enableEdit(item, idx, $event)"><i class="fa fa-pencil-square-o fa-fw"></i> Edit text</p>
+        <p class="pointer save-changes" (click)="enableEdit(item, idx, $event)" *ngIf="editActive === idx"><i class="fa fa-save"></i><b> Save changes</b></p>
         <p class="pointer" *ngIf="item.status === 'done'" (click)="reopen(item)"><i class="fa fa-refresh"></i> Re-open</p>
         <p class="pointer" *ngIf="this.TaskService.deleteActivation === true" (click)="delete(item, idx)"><i class="fa fa-trash-o"></i> Delete</p>
         <p class="" *ngIf="item.adminapprove">Task completed and approved on: <b>{{DatepickerService.dt | date: 'dd-MM-yyyy'}}</b></p>

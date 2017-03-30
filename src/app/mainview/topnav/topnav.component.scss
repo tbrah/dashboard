@@ -119,3 +119,15 @@
           color:$white-font!important;
           box-shadow: none!important;
         }
+.notification-drpdwn{
+  position:absolute;
+  z-index:2000;
+  background-color:#FFF;
+  list-style: none;
+  padding:10px;
+  right:14px;
+  li{
+    margin-left:none;
+    padding:5px;
+  }
+}

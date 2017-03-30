@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../../users.service';
 import { TaskService } from '../../task.service';
 import { PopupService } from '../../popup.service';
+import { NotificationService } from '../../notification.service';
 
 @Component({
   selector: 'app-topnav',
@@ -10,7 +11,7 @@ import { PopupService } from '../../popup.service';
 })
 export class TopnavComponent implements OnInit {
 
-  constructor(private UsersService:UsersService, private TaskService:TaskService, private PopupService:PopupService) { }
+  constructor(private UsersService:UsersService, private TaskService:TaskService, private PopupService:PopupService, private NotificationService:NotificationService) { }
 
   ngOnInit() {
   }
@@ -76,6 +77,12 @@ export class TopnavComponent implements OnInit {
       this.toggleButton = false;
       this.storedValue = "";
     }
+  }
+
+  showNotification = false;
+
+  toggleNotification(){
+    this.showNotification = !this.showNotification;
   }
 
 }

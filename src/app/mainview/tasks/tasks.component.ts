@@ -3,6 +3,7 @@ import { TaskService } from '../../task.service';
 import { UsersService } from '../../users.service';
 import { PopupService } from '../../popup.service';
 import { DatepickerService } from '../../datepicker.service';
+import { NotificationService } from '../../notification.service';
 
 @Component({
   selector: 'app-tasks',
@@ -17,7 +18,7 @@ export class TasksComponent implements OnInit {
   undoChanges = []; // {id:0, title: "testing", description: ""}
 
 
-  constructor(private TaskService:TaskService, private UsersService:UsersService, private PopupService:PopupService, private DatepickerService:DatepickerService) {
+  constructor(private TaskService:TaskService, private UsersService:UsersService, private PopupService:PopupService, private DatepickerService:DatepickerService, private NotificationService:NotificationService) {
 
 }
 
@@ -31,7 +32,18 @@ export class TasksComponent implements OnInit {
       item.print = false;
     }
   }
-  enableEdit(item, idx){
+  enableEdit(item, idx, e){
+    if(e.srcElement.innerHTML.toLowerCase() === " save changes"){
+      let textContent = item.title;
+      let newNot = {
+        text: textContent + "task was updated", 
+        date: "07-07-09", 
+        participent:[]
+      }
+      //For loop to grab the participents
+      newNot.participent.push(item.participent[0]);
+      console.log(newNot.participent);
+    }
     if(this.editActive === idx){
       this.editActive = null;
       this.currentTask = [];
