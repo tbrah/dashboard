@@ -22,6 +22,10 @@ export class TabFilterPipe implements PipeTransform {
       return array.filter(function(array:any){
         return array.status === "on hold";
       })
+    } else if (currentTab === "pending"){
+      return array.filter(function(array:any){
+        return array.papprove === true;
+      })
     }
   }
 

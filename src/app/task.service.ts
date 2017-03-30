@@ -40,6 +40,10 @@ orderby:[{name:"Whitney Jørgensen", picture:"whitney.jpg"}]
   currentSearch:any;
   deleteActivation = false;
   currentTab = "all";
+
+  //This toggles the user task filter.
+  //Switch is in top-nav.
+  myTask = null;
   
 
 }

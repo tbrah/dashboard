@@ -1,6 +1,6 @@
-<div class="task-wrapper" *ngFor="let item of TaskService.tasks | user:myTask | search:TaskService.currentSearch | tabFilter:TaskService.currentTab | orderById | orderByDone let idx = index" [class.task-done]="item.adminapprove === true">
+<div class="task-wrapper" *ngFor="let item of TaskService.tasks | user:TaskService.myTask | search:TaskService.currentSearch | tabFilter:TaskService.currentTab | orderById | orderByDone let idx = index" [class.task-done]="item.adminapprove === true">
     <div class="header">
-      <h1 [hidden]="editActive === idx" (click)="toggleMyTask()">{{item.title}}</h1>
+      <h1 [hidden]="editActive === idx">{{item.title}}</h1>
       <input class="edit-header" type="text" value="{{item.title}}" *ngIf="editActive === idx" [(ngModel)]="currentTask.title">
       <div class="right-content">
         <p><i class="fa fa-users"></i>  Participants:</p>

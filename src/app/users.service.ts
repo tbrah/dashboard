@@ -9,7 +9,7 @@ export class UsersService {
     {id: 2, name : "Kristy Cunt" , position : "Software Developer" , picture: "kristy.png", admin: false,},
   ];
 
-  loggedUser = this.users[2];
+  loggedUser = this.users[0];
   currentSearch:any;
 
   constructor() { }
