@@ -4,6 +4,7 @@ import { UsersService } from '../../users.service';
 import { PopupService } from '../../popup.service';
 import { DatepickerService } from '../../datepicker.service';
 import { NotificationService } from '../../notification.service';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
   selector: 'app-tasks',
@@ -16,14 +17,21 @@ export class TasksComponent implements OnInit {
   editActive:number;
   currentTask = [];
   undoChanges = []; // {id:0, title: "testing", description: ""}
+  
 
-
-  constructor(private TaskService:TaskService, private UsersService:UsersService, private PopupService:PopupService, private DatepickerService:DatepickerService, private NotificationService:NotificationService) {
+  constructor(private TaskService:TaskService, private UsersService:UsersService, private PopupService:PopupService, private DatepickerService:DatepickerService, private NotificationService:NotificationService, private af:AngularFire) {
 
 }
 
   ngOnInit() {
   }
+
+  updateItem(item){
+    let updates = {};
+    updates['/tasks/' + item.$key] = item;
+    this.af.database.object('').update(updates);
+  }
+
   //check if the icon clicked on is the tick
   printSelector(event, item){
     if (event.srcElement.className.includes("fa-check-circle")){
@@ -34,6 +42,11 @@ export class TasksComponent implements OnInit {
   }
   enableEdit(item, idx, e){
     if(e.srcElement.innerHTML.toLowerCase() === " save changes"){
+
+      let updates = {};
+      updates['/tasks/' + item.$key] = this.currentTask;
+      this.af.database.object('').update(updates);
+
       let textContent = item.title;
       let newNot = {
         text: textContent + "task was updated", 
@@ -55,32 +68,39 @@ export class TasksComponent implements OnInit {
       this.currentTask = item;
     }
   }
+  // This logic should be moved to the task service
   delete(item,idx){
     let i = idx;
-    this.TaskService.tasks.splice(i, 1);
+    this.af.database.list('/tasks').remove(item.$key);
   }
   adminApprove(item){
     item.adminapprove = true;
     item.papprove = false;
     item.status = "done";
+    this.updateItem(item);
   }
   pApprove(item){
     item.papprove = true;
+    this.updateItem(item);
   }
   deny(item){
     item.adminapprove = false;
     item.papprove =  false;
+    this.updateItem(item);
   }
   reopen(item){
     item.adminapprove = false;
     item.papprove = true;
     item.status = "active";
+    this.updateItem(item);
   }
   setHold(item){
     item.status = "on hold";
+    this.updateItem(item);
   }
   setActive(item){
     item.status = "active";
+    this.updateItem(item);
   }
   closeCalendar(){
     this.DatepickerService.currentDate = null;

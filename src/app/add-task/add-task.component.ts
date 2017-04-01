@@ -3,6 +3,7 @@ import { PopupService } from '../popup.service';
 import { UsersService } from '../users.service';
 import { TaskService } from '../task.service';
 import { DatepickerService } from '../datepicker.service';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
   selector: 'app-add-task',
@@ -11,7 +12,7 @@ import { DatepickerService } from '../datepicker.service';
 })
 export class AddTaskComponent implements OnInit {
 
-  constructor(private PopupService:PopupService, private UsersService:UsersService, private DatepickerService:DatepickerService, private TaskService:TaskService) { }
+  constructor(private PopupService:PopupService, private UsersService:UsersService, private DatepickerService:DatepickerService, private TaskService:TaskService, private af:AngularFire) { }
 
   ngOnInit() {
   }
@@ -49,7 +50,8 @@ export class AddTaskComponent implements OnInit {
     i++;
     this.newItem.id = i;
     this.newItem.orderby.push(this.UsersService.loggedUser);
-    this.TaskService.tasks.push(this.newItem);
+    this.af.database.list('/tasks').push(this.newItem);
+    //this.TaskService.tasks.push(this.newItem);
     this.cancelAdd();
   }
 

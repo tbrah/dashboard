@@ -1,4 +1,4 @@
-<div class="task-wrapper" *ngFor="let item of TaskService.tasks | user:TaskService.myTask | search:TaskService.currentSearch | tabFilter:TaskService.currentTab | orderById | orderByDone let idx = index" [class.task-done]="item.adminapprove === true">
+<div class="task-wrapper" *ngFor="let item of TaskService.items | user:TaskService.myTask | search:TaskService.currentSearch | tabFilter:TaskService.currentTab | orderById | orderByDone let idx = index" [class.task-done]="item.adminapprove === true">
     <div class="header">
       <h1 [hidden]="editActive === idx">{{item.title}}</h1>
       <input class="edit-header" type="text" value="{{item.title}}" *ngIf="editActive === idx" [(ngModel)]="currentTask.title">
@@ -14,7 +14,7 @@
         <p *ngIf="item.papprove === true"><i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i> Waiting for admin approval</p>
         <p class="pointer" [hidden]="editActive === idx" *ngIf="UsersService.loggedUser.admin" (click)="enableEdit(item, idx, $event)"><i class="fa fa-pencil-square-o fa-fw"></i> Edit text</p>
         <p class="pointer save-changes" (click)="enableEdit(item, idx, $event)" *ngIf="editActive === idx"><i class="fa fa-save"></i><b> Save changes</b></p>
-        <p class="pointer" *ngIf="item.status === 'done'" (click)="reopen(item)"><i class="fa fa-refresh"></i> Re-open</p>
+        <p class="pointer" *ngIf="item.status === 'done' && UsersService.loggedUser.admin" (click)="reopen(item)"><i class="fa fa-refresh"></i> Re-open</p>
         <p class="pointer" *ngIf="this.TaskService.deleteActivation === true" (click)="delete(item, idx)"><i class="fa fa-trash-o"></i> Delete</p>
         <p class="" *ngIf="item.adminapprove">Task completed and approved on: <b>{{DatepickerService.dt | date: 'dd-MM-yyyy'}}</b></p>
       </div>
@@ -53,7 +53,7 @@
     </div>
     <div class="details-subcontainer">
       <p><i class="fa fa-map-marker"></i><input *ngIf="editActive === idx" value="{{item.location}}" [(ngModel)]="item.location"> <span [hidden]="editActive === idx">{{item.location}}</span></p>
-       <p class="pointer" (click)="pApprove(item)"><span *ngIf="!UsersService.loggedUser.admin && !item.papprove"><i class="fa fa-thumbs-o-up"></i> Approve and wait for check</span><span *ngIf="item.papprove && UsersService.loggedUser.admin === false" tooltip="You have approved this task and currently waiting for approval" placement="bottom"><i class="fa fa-check"></i> You have approved this task</span></p>
+       <p class="pointer" (click)="pApprove(item)"><span *ngIf="!UsersService.loggedUser.admin && !item.papprove && !item.status === 'done'"><i class="fa fa-thumbs-o-up"></i> Approve and wait for check</span><span *ngIf="item.papprove && UsersService.loggedUser.admin === false" tooltip="You have approved this task and currently waiting for approval" placement="bottom"><i class="fa fa-check"></i> You have approved this task</span></p>
       <p *ngIf="item.papprove === true && UsersService.loggedUser.admin === true"><i class="fa fa-spinner fa-pulse fa-3x"></i> Waiting for admin approval: <span class="approve-wrapper"><i class="pointer fa fa-check"(click)="adminApprove(item)" tooltip="Approve"></i><i class="pointer fa fa-times"(click)="deny(item)" tooltip="Deny"></i></span></p>
     </div>
     <div class="details-subcontainer orderby">

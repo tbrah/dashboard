@@ -8,6 +8,7 @@ import { TooltipModule } from 'ng2-bootstrap';
 import { ModalModule } from 'ng2-bootstrap';
 import { DatepickerModule } from 'ng2-bootstrap';
 import { DropdownModule } from 'ng2-bootstrap';
+import { AngularFireModule } from 'angularfire2';
 
 import { AppComponent } from './app.component';
 import { SidenavComponent } from './sidenav/sidenav.component';
@@ -33,6 +34,15 @@ import { TabFilterPipe } from './tab-filter.pipe';
 import { UserPipe } from './user.pipe';
 import { NotiPipePipe } from './noti-pipe.pipe';
 import { StyleguideComponent } from './mainview/styleguide/styleguide.component';
+
+// Must export the config
+export const firebaseConfig = {
+  apiKey: 'AIzaSyB-jFehTh3hael-kS5a8WtywWMHY-KoZ3g',
+  authDomain: 'ordbogen-dashboard.firebaseapp.com',
+  databaseURL: 'https://ordbogen-dashboard.firebaseio.com',
+  storageBucket: 'ordbogen-dashboard.appspot.com',
+  messagingSenderId: '1047466307776'
+};
 
 @NgModule({
   declarations: [
@@ -63,6 +73,7 @@ import { StyleguideComponent } from './mainview/styleguide/styleguide.component'
     ModalModule.forRoot(),
     DatepickerModule.forRoot(),
     DropdownModule.forRoot(),
+    AngularFireModule.initializeApp(firebaseConfig),
 
   ],
   providers: [
