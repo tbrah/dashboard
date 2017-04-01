@@ -37,7 +37,7 @@ import { StyleguideComponent } from './mainview/styleguide/styleguide.component'
 
 // Must export the config
 export const firebaseConfig = {
-  apiKey: 'AIzaSyB-jFehTh3hael-kS5a8WtywWMHY-KoZ3g',
+  apiKey: '',
   authDomain: 'ordbogen-dashboard.firebaseapp.com',
   databaseURL: 'https://ordbogen-dashboard.firebaseio.com',
   storageBucket: 'ordbogen-dashboard.appspot.com',
