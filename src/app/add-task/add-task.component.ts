@@ -12,7 +12,7 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 })
 export class AddTaskComponent implements OnInit {
 
-  constructor(private PopupService:PopupService, private UsersService:UsersService, private DatepickerService:DatepickerService, private TaskService:TaskService, private af:AngularFire) { }
+  constructor(private PopupService:PopupService, private UsersService:UsersService, private DatepickerService:DatepickerService, private TaskService:TaskService, private af:AngularFire,) { }
 
   ngOnInit() {
   }
@@ -45,15 +45,32 @@ export class AddTaskComponent implements OnInit {
     }
   }
 
+  notArray = {
+    date:"",
+    participent: [],
+    title:"",
+    type: "add",
+  };
+
   addItem(){
-    let i = 1;
+    let i = this.TaskService.items.length;
     i++;
     this.newItem.id = i;
+    
+    this.notArray.participent = this.newItem.participent;
+    this.notArray.title = this.newItem.title;
+    this.notArray.type = "add";
+    let currentDate = new Date();
+    let convertDate = currentDate.toString();
+    this.notArray.date = convertDate;
     this.newItem.orderby.push(this.UsersService.loggedUser);
+    this.af.database.list('/notifications').push(this.notArray);
     this.af.database.list('/tasks').push(this.newItem);
     //this.TaskService.tasks.push(this.newItem);
-    this.cancelAdd();
+    this.PopupService.togglePopup();
   }
+
+  showEmplList = false;
 
   cancelAdd(){
     this.newItem =
@@ -73,8 +90,6 @@ export class AddTaskComponent implements OnInit {
       };
     this.PopupService.togglePopup();
   }
-
-  showEmplList = false;
 
   focusfun(){
     this.showEmplList = !this.showEmplList;
