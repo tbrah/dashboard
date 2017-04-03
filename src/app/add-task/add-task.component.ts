@@ -46,7 +46,7 @@ export class AddTaskComponent implements OnInit {
   }
 
   addItem(){
-    let i = this.TaskService.tasks.length - 1;
+    let i = 1;
     i++;
     this.newItem.id = i;
     this.newItem.orderby.push(this.UsersService.loggedUser);

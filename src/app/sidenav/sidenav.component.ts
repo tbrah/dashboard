@@ -12,7 +12,7 @@ export class SidenavComponent implements OnInit {
   profileNavCtrl:boolean = false;
 
   constructor(private UsersService:UsersService, private NavService:NavServiceService) {
-
+    
   }
 
   ngOnInit() {
@@ -26,7 +26,14 @@ export class SidenavComponent implements OnInit {
     }
   }
 
-  
+  changeUser(){
+    if(this.UsersService.loggedUser === this.UsersService.users[2]){
+       this.UsersService.loggedUser = this.UsersService.userDB[0];
+    } else {
+      this.UsersService.loggedUser = this.UsersService.users[2];
+    }
+
+  }
 
   selectMenu(menu){
     if (menu === "home"){

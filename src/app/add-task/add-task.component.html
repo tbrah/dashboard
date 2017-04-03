@@ -55,7 +55,7 @@
             <div class="search-field"><p>Assign participants:</p><div class="search-wrapper"><label><i class="fa fa-search"></i></label><input type="text" placeholder="Search Employees" [(ngModel)]="UsersService.currentSearch" (focus)="focusfun()"><label class="drp-dwn"><i class="fa fa-sort-desc"></i></label></div></div>
             <div class="p-drop-down" *ngIf="showEmplList">
               <ul>
-                <li *ngFor="let user of UsersService.users | searchEmployee:UsersService.currentSearch" (click)="selectedEmpl(user)">
+                <li *ngFor="let user of UsersService.userDB | searchEmployee:UsersService.currentSearch" (click)="selectedEmpl(user)">
                   <img class="profile-pic-circle" src="../../assets/{{user.picture}}"><p>{{user.name}}<br><span>{{user.position}}</span></p>
                 </li>
               </ul>

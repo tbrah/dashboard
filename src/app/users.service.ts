@@ -1,7 +1,16 @@
 import { Injectable } from '@angular/core';
+import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Injectable()
 export class UsersService {
+
+  userDB = [];
+
+  constructor(private af:AngularFire) {
+      this.af.database.list('/users').subscribe(users => {
+      this.userDB = users;
+    })
+  }
 
   users:any = [
     {id: 0, name : "Whitney Jørgensen", position : "Head of Talent Recruitment" , picture: "whitney.jpg", admin: true,},
@@ -11,8 +20,6 @@ export class UsersService {
 
   loggedUser = this.users[0];
   currentSearch:any;
-
-  constructor() { }
 
 
 }

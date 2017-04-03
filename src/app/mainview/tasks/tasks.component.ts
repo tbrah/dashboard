@@ -44,10 +44,14 @@ export class TasksComponent implements OnInit {
     if(e.srcElement.innerHTML.toLowerCase() === " save changes"){
 
       let updates = {};
+
+      let notifications = [item.$key, item.title, item.participent];
+      console.log(notifications);
       updates['/tasks/' + item.$key] = this.currentTask;
       this.af.database.object('').update(updates);
 
       let textContent = item.title;
+      let itemDate = item.date;
       let newNot = {
         text: textContent + "task was updated", 
         date: "07-07-09", 

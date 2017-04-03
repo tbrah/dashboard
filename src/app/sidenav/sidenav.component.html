@@ -1,6 +1,6 @@
 <div class="sidenav-wrapper">
     <div class="side-bar">
-      <img class="logo" src="../../assets/white-logo.svg">
+      <img class="logo" src="../../assets/white-logo.svg" (click)="changeUser()">
       <hr>
       <div class="profile-area">
         <img src="../../assets/{{UsersService.loggedUser.picture}}">
@@ -17,10 +17,10 @@
       <hr>
       <ul class="nav">
         <li [class.active-nav]="NavService.selectedNav === 'home'" (click)="selectMenu('home')"><a href="#"><i class="fa fa-home fa-fw"></i><p>home</p></a></li>
-        <li [class.active-nav]="NavService.selectedNav === 'calendar'" (click)="selectMenu('calendar')"><a href="#"><i class="fa fa-calendar fa-fw"></i><p>calendar</p></a></li>
+        <li><a href="https://calendar.google.com/calendar/render?cid=aHY3bXA4NWJhZjVqN2oxcjdhZXRzcTIwNzBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ" target="_blank"><i class="fa fa-calendar fa-fw"></i><p>calendar</p></a></li>
         <li [class.active-nav]="NavService.selectedNav === 'tasks'" (click)="selectMenu('tasks')"><a href="#"><i class="fa fa-list fa-fw"></i><p>tasks</p></a></li>
         <li [class.active-nav]="NavService.selectedNav === 'styleguide'" (click)="selectMenu('styleguide')"><a href="#"><i class="fa fa-map-o fa-fw"></i><p>styleguide</p></a></li>
-        <li [class.active-nav]="NavService.selectedNav === 'print checklist'" (click)="selectMenu('print checklist')"><a href="#"><i class="fa fa-print fa-fw"></i><p>print checklist</p></a></li>
+        <li><a href="https://docs.google.com/document/d/1KrZurVaMkh1P7eGKTzYdzK_PJVPtCJpM0eW-X_dOCfI/edit" target="_blank"><i class="fa fa-print fa-fw"></i><p>print checklist</p></a></li>
       </ul>
     </div>
     <div class="background-color"></div>
