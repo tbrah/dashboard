@@ -57,22 +57,31 @@ export class AddTaskComponent implements OnInit {
     i++;
     this.newItem.id = i;
     
-    this.notArray.participent = this.newItem.participent;
+    
     this.notArray.title = this.newItem.title;
     this.notArray.type = "add";
     let currentDate = new Date();
     let convertDate = currentDate.toString();
     this.notArray.date = convertDate;
     this.newItem.orderby.push(this.UsersService.loggedUser);
+    let myMa = {};
+    myMa['seen']= false;
+    this.newItem.participent.forEach(function(item, index){
+      item[index] = myMa;
+    })
+    console.log(this.newItem.participent);
+    this.notArray.participent = this.newItem.participent;
+
     this.af.database.list('/notifications').push(this.notArray);
     this.af.database.list('/tasks').push(this.newItem);
-    //this.TaskService.tasks.push(this.newItem);
+
     this.PopupService.togglePopup();
   }
 
   showEmplList = false;
 
   cancelAdd(){
+    //Reset all the values if user clicks on the (x)
     this.newItem =
         {id:null,
         status:"active",

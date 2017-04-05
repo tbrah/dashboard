@@ -18,9 +18,10 @@
       <p *ngIf="UsersService.loggedUser.admin"><i class="fa fa-lock admin"></i> Admin Panel:</p>
       <p *ngIf="UsersService.loggedUser.admin" class="pointer plus" tooltip="Add a new task" placement="bottom" (click)="PopupService.togglePopup()"><i class="fa fa-plus-circle fa-fw"></i></p>
       <p *ngIf="UsersService.loggedUser.admin" class="pointer" tooltip="Toggle delete buttons" placement="left" (click)="toggleDelete()"><i class="fa fa-trash-o fa-fw"></i></p>
-      <p class="pointer" (click)="toggleNotification()"><i class="fa fa-bell-o fa-fw"></i></p>
+      <p class="pointer" (click)="toggleNotification()"><i class="fa fa-bell-o fa-fw" (click)="findArrayLength()"></i></p>
+      <div class="red-circle"><p>2</p></div>
       <ul class="notification-drpdwn" *ngIf="showNotification">
-        <li *ngFor ="let noti of NotificationService.not | notiPipe:UsersService.loggedUser">{{noti.text}} <br> {{noti.date}}</li>
+        <li *ngFor ="let noti of NotificationService.notifications | notiPipe:UsersService.loggedUser">{{noti.title}} <br> {{noti.date}}</li>
       </ul>
     </div>
   </div>

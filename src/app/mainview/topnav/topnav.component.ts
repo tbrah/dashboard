@@ -85,4 +85,8 @@ export class TopnavComponent implements OnInit {
     this.showNotification = !this.showNotification;
   }
 
+  findArrayLength(){
+    console.log(this.NotificationService.notifications[1].participent[0][0].seen)
+  }
+
 }
