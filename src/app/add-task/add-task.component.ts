@@ -64,12 +64,13 @@ export class AddTaskComponent implements OnInit {
     let convertDate = currentDate.toString();
     this.notArray.date = convertDate;
     this.newItem.orderby.push(this.UsersService.loggedUser);
-    let myMa = {};
+    let myMa = [];
     myMa['seen']= false;
+    console.log(myMa)
     this.newItem.participent.forEach(function(item, index){
-      item[index] = myMa;
+      let name = "view"
+      item[name] = myMa;
     })
-    console.log(this.newItem.participent);
     this.notArray.participent = this.newItem.participent;
 
     this.af.database.list('/notifications').push(this.notArray);

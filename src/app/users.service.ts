@@ -18,7 +18,7 @@ export class UsersService {
     {id: 2, name : "Kristy Cunt" , position : "Software Developer" , picture: "kristy.png", admin: false,},
   ];
 
-  loggedUser = this.users[0];
+  loggedUser = this.users[2];
   currentSearch:any;
 
 

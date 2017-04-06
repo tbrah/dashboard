@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
+import { NotificationService } from '../notification.service';
 import { NavServiceService } from '../nav-service.service';
 
 @Component({
@@ -11,7 +12,7 @@ export class SidenavComponent implements OnInit {
 
   profileNavCtrl:boolean = false;
 
-  constructor(private UsersService:UsersService, private NavService:NavServiceService) {
+  constructor(private UsersService:UsersService, private NavService:NavServiceService, private NotificationService:NotificationService) {
     
   }
 
@@ -47,6 +48,11 @@ export class SidenavComponent implements OnInit {
     } if (menu === "print checklist"){
       this.NavService.selectedNav = "print checklist";
     }
+  }
+
+  checkList(){
+    console.log(this.NotificationService.seenArray)
+    this.NotificationService.findArrayLength();
   }
 
 }

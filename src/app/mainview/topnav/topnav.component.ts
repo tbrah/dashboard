@@ -4,6 +4,7 @@ import { TaskService } from '../../task.service';
 import { PopupService } from '../../popup.service';
 import { NotificationService } from '../../notification.service';
 
+
 @Component({
   selector: 'app-topnav',
   templateUrl: './topnav.component.html',
@@ -11,7 +12,7 @@ import { NotificationService } from '../../notification.service';
 })
 export class TopnavComponent implements OnInit {
 
-  constructor(private UsersService:UsersService, private TaskService:TaskService, private PopupService:PopupService, private NotificationService:NotificationService) { }
+  constructor(private UsersService:UsersService, private TaskService:TaskService, private PopupService:PopupService, private NotificationService:NotificationService) {}
 
   ngOnInit() {
   }
@@ -83,10 +84,6 @@ export class TopnavComponent implements OnInit {
 
   toggleNotification(){
     this.showNotification = !this.showNotification;
-  }
-
-  findArrayLength(){
-    console.log(this.NotificationService.notifications[1].participent[0][0].seen)
   }
 
 }
