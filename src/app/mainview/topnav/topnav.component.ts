@@ -84,6 +84,7 @@ export class TopnavComponent implements OnInit {
 
   toggleNotification(){
     this.showNotification = !this.showNotification;
+    this.NotificationService.clearNewNotifications();
   }
 
 }

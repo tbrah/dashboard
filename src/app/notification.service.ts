@@ -47,4 +47,22 @@ export class NotificationService {
     this.seenNumber = this.seenArray.length;
   }
 
+  // Clear the seen new notifications for the user.
+  clearNewNotifications(){
+    let loggedUser = this.UsersService.loggedUser;
+
+    //Loop through all the notifications and find the ones that should be updated
+    this.notifications.forEach(function(entry){
+      entry.participent.forEach(function(childEntry){
+        if(childEntry.id === loggedUser.id){
+          childEntry.view.seen = true;
+        }
+      })
+    })
+    //Push the objects to the database so updated values are realised.
+    let updates = {};
+    updates['/notifications/'] = this.notifications;
+    console.log(updates);
+    this.af.database.object('').update(updates);
+  }
 }

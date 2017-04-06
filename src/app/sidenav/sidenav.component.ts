@@ -33,7 +33,7 @@ export class SidenavComponent implements OnInit {
     } else {
       this.UsersService.loggedUser = this.UsersService.users[2];
     }
-
+    this.NotificationService.findArrayLength();
   }
 
   selectMenu(menu){
