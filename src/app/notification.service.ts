@@ -62,7 +62,6 @@ export class NotificationService {
     //Push the objects to the database so updated values are realised.
     let updates = {};
     updates['/notifications/'] = this.notifications;
-    console.log(updates);
     this.af.database.object('').update(updates);
   }
 }

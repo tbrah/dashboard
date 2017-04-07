@@ -19,9 +19,14 @@
       <p *ngIf="UsersService.loggedUser.admin" class="pointer plus" tooltip="Add a new task" placement="bottom" (click)="PopupService.togglePopup()"><i class="fa fa-plus-circle fa-fw"></i></p>
       <p *ngIf="UsersService.loggedUser.admin" class="pointer" tooltip="Toggle delete buttons" placement="left" (click)="toggleDelete()"><i class="fa fa-trash-o fa-fw"></i></p>
       <p class="pointer" (click)="toggleNotification()"><i class="fa fa-bell-o fa-fw"></i></p>
-      <div class="red-circle" *ngIf="UsersService.loggedUser.admin === false"><p>{{NotificationService.seenNumber}}</p></div>
+      <div class="red-circle" *ngIf="NotificationService.seenNumber > 0"><p>{{NotificationService.seenNumber}}</p></div>
       <ul class="notification-drpdwn" *ngIf="showNotification">
-        <li *ngFor ="let noti of NotificationService.notifications | notiPipe:UsersService.loggedUser">{{noti.title}} <br> {{noti.date}}</li>
+        <li *ngFor ="let noti of NotificationService.notifications | notiPipe:UsersService.loggedUser | reverse">
+        <div class="icon-holder"><p class="fa fa-plus" *ngIf="noti.type === 'add'"></p><p class="fa fa-pencil" *ngIf="noti.type === 'edit'"></p></div>
+        <div class="content-holder">
+          <div><h4>{{noti.title}}</h4><p><span *ngIf="noti.type === 'add'">Was added on </span><span *ngIf="noti.type === 'edit'">Was edited on </span>{{noti.date |date:'dd-MM-yyyy hh:mm a'}}</p></div>
+        </div>
+        </li>
       </ul>
     </div>
   </div>

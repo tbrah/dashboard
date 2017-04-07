@@ -41,26 +41,31 @@ export class TasksComponent implements OnInit {
     }
   }
   enableEdit(item, idx, e){
+
     if(e.srcElement.innerHTML.toLowerCase() === " save changes"){
 
       let updates = {};
 
       let notifications = [item.$key, item.title, item.participent];
-      console.log(notifications);
       updates['/tasks/' + item.$key] = this.currentTask;
       this.af.database.object('').update(updates);
 
+      let currentDate = new Date();
+      let convertDate = currentDate.toString();
+
       let textContent = item.title;
       let itemDate = item.date;
-      let newNot = {
-        text: textContent + "task was updated", 
-        date: "07-07-09", 
-        participent:[]
-      }
-      //For loop to grab the participents
-      newNot.participent.push(item.participent[0]);
-      console.log(newNot.participent);
+      let notArray = {
+            date: convertDate,
+            participent: [],
+            title: textContent,
+            type: "edit",
+          };
+
+      notArray.participent = item.participent;
+      this.af.database.list('/notifications').push(notArray);
     }
+
     if(this.editActive === idx){
       this.editActive = null;
       this.currentTask = [];

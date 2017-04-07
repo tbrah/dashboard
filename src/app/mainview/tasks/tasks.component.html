@@ -53,7 +53,7 @@
     </div>
     <div class="details-subcontainer">
       <p><i class="fa fa-map-marker"></i><input *ngIf="editActive === idx" value="{{item.location}}" [(ngModel)]="item.location"> <span [hidden]="editActive === idx">{{item.location}}</span></p>
-       <p class="pointer" (click)="pApprove(item)"><span *ngIf="!UsersService.loggedUser.admin && !item.papprove && !item.status === 'done'"><i class="fa fa-thumbs-o-up"></i> Approve and wait for check</span><span *ngIf="item.papprove && UsersService.loggedUser.admin === false" tooltip="You have approved this task and currently waiting for approval" placement="bottom"><i class="fa fa-check"></i> You have approved this task</span></p>
+       <p class="pointer" (click)="pApprove(item)"><span *ngIf="!UsersService.loggedUser.admin && !item.papprove && item.status === 'active'"><i class="fa fa-thumbs-o-up"></i> Approve and wait for check</span><span *ngIf="item.papprove && UsersService.loggedUser.admin === false" tooltip="You have approved this task and currently waiting for approval" placement="bottom"><i class="fa fa-check"></i> You have approved this task</span></p>
       <p *ngIf="item.papprove === true && UsersService.loggedUser.admin === true"><i class="fa fa-spinner fa-pulse fa-3x"></i> Waiting for admin approval: <span class="approve-wrapper"><i class="pointer fa fa-check"(click)="adminApprove(item)" tooltip="Approve"></i><i class="pointer fa fa-times"(click)="deny(item)" tooltip="Deny"></i></span></p>
     </div>
     <div class="details-subcontainer orderby">

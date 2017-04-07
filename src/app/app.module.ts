@@ -34,6 +34,7 @@ import { TabFilterPipe } from './tab-filter.pipe';
 import { UserPipe } from './user.pipe';
 import { NotiPipePipe } from './noti-pipe.pipe';
 import { StyleguideComponent } from './mainview/styleguide/styleguide.component';
+import { ReversePipe } from './reverse.pipe';
 
 // Must export the config
 export const firebaseConfig = {
@@ -62,6 +63,7 @@ export const firebaseConfig = {
     UserPipe,
     NotiPipePipe,
     StyleguideComponent,
+    ReversePipe,
   ],
   imports: [
     BrowserModule,
