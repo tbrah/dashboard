@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsersService } from '../users.service';
 import { NotificationService } from '../notification.service';
 import { NavServiceService } from '../nav-service.service';
+import { PostsService } from '../posts.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -12,11 +13,12 @@ export class SidenavComponent implements OnInit {
 
   profileNavCtrl:boolean = false;
 
-  constructor(private UsersService:UsersService, private NavService:NavServiceService, private NotificationService:NotificationService) {
+  constructor(private UsersService:UsersService, private NavService:NavServiceService, private NotificationService:NotificationService, private PostsService:PostsService) {
     
   }
 
   ngOnInit() {
+    this.checkJson();
   }
 
   toggleProfileNav(){
@@ -54,5 +56,19 @@ export class SidenavComponent implements OnInit {
     console.log(this.NotificationService.seenArray)
     this.NotificationService.findArrayLength();
   }
+
+  testing = [];
+  errorMessage;
+
+  getData: string;
+
+  checkJson(){
+    this.PostsService.getData().subscribe(
+      data => this.testing = data,
+      error => alert(error),
+      () => console.log(this.testing)
+    );
+  }
+
 
 }
