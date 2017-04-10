@@ -4,7 +4,7 @@
       <input class="edit-header" type="text" value="{{item.title}}" *ngIf="editActive === idx" [(ngModel)]="currentTask.title">
       <div class="right-content">
         <p><i class="fa fa-users"></i>  Participants:</p>
-        <img  *ngFor="let p of item.participent" class="profile-pic-circle" [class.white-profile-pic-circle]="item.status === 'done'" src="../../assets/{{p.picture}}" tooltip="{{p.name}}">
+        <img  *ngFor="let p of item.participent" class="profile-pic-circle" [class.white-profile-pic-circle]="item.status === 'done'" src="./assets/{{p.picture}}" tooltip="{{p.name}}">
       </div>
     </div>
       <div class="status-wrapper">
@@ -57,7 +57,7 @@
       <p *ngIf="item.papprove === true && UsersService.loggedUser.admin === true"><i class="fa fa-spinner fa-pulse fa-3x"></i> Waiting for admin approval: <span class="approve-wrapper"><i class="pointer fa fa-check"(click)="adminApprove(item)" tooltip="Approve"></i><i class="pointer fa fa-times"(click)="deny(item)" tooltip="Deny"></i></span></p>
     </div>
     <div class="details-subcontainer orderby">
-      <p>Ordered by:</p><img class="profile-pic-circle" *ngFor="let orderby of item.orderby" [class.white-profile-pic-circle]="item.status === 'done'" src="../../assets/{{orderby.picture}}" tooltip="{{orderby.name}}">
+      <p>Ordered by:</p><img class="profile-pic-circle" *ngFor="let orderby of item.orderby" [class.white-profile-pic-circle]="item.status === 'done'" src="./assets/{{orderby.picture}}" tooltip="{{orderby.name}}">
     </div>
   </div>
 </div>

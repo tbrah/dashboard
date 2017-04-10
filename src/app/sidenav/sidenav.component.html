@@ -1,9 +1,9 @@
 <div class="sidenav-wrapper">
     <div class="side-bar">
-      <img class="logo" src="../../assets/white-logo.svg" (click)="changeUser()">
+      <img class="logo" src="./assets/white-logo.svg" (click)="changeUser()">
       <hr>
       <div class="profile-area">
-        <img src="../../assets/{{UsersService.loggedUser.picture}}" (click)="checkList()">
+        <img src="./assets/{{UsersService.loggedUser.picture}}" (click)="checkList()">
         <div class="tag-area" (click)="toggleProfileNav()">
               <h5>{{UsersService.loggedUser.name}}</h5> <b class="caret" [class.caret-switch]="profileNavCtrl"></b>
               <h6>{{UsersService.loggedUser.position}}</h6>

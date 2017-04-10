@@ -2,7 +2,7 @@
   <div class="left"><h1><i class="fa fa-plus"></i> Create new task</h1></div>
   <div class="right">
     <p>Currently logged in as:</p>
-    <img class="profile-pic-circle" src="../../assets/{{UsersService.loggedUser.picture}}" tooltip="{{UsersService.loggedUser.name}}">
+    <img class="profile-pic-circle" src="./assets/{{UsersService.loggedUser.picture}}" tooltip="{{UsersService.loggedUser.name}}">
     <div class="button-wrapper"><button (click)="cancelAdd()"><i class="fa fa-times"></i></button></div>
   </div>
 </div>
@@ -56,7 +56,7 @@
             <div class="p-drop-down" *ngIf="showEmplList">
               <ul>
                 <li *ngFor="let user of UsersService.userDB | searchEmployee:UsersService.currentSearch" (click)="selectedEmpl(user)">
-                  <img class="profile-pic-circle" src="../../assets/{{user.picture}}"><p>{{user.name}}<br><span>{{user.position}}</span></p>
+                  <img class="profile-pic-circle" src="./assets/{{user.picture}}"><p>{{user.name}}<br><span>{{user.position}}</span></p>
                 </li>
               </ul>
             </div>
@@ -65,7 +65,7 @@
         <button class="btn btn-success save" (click)="addItem()"><i class="fa fa-clipboard"></i> Save</button>
         <div class="participant-container">
             <div *ngIf="newItem.participent">
-              <div class="p-obj" *ngFor="let p of newItem.participent"><img class="profile-pic-circle" src="../../assets/{{p.picture}}" tooltip="{{p.name}}" placement="left">
+              <div class="p-obj" *ngFor="let p of newItem.participent"><img class="profile-pic-circle" src="./assets/{{p.picture}}" tooltip="{{p.name}}" placement="left">
                 <button class="close" (click)="deleteP(p)"><i class="fa fa-times"></i></button>
               </div>
             </div>

@@ -72,10 +72,14 @@ export class AddTaskComponent implements OnInit {
       item[name] = myMa;
     })
     this.notArray.participent = this.newItem.participent;
-    this.af.database.list('/notifications').push(this.notArray);
-    this.af.database.list('/tasks').push(this.newItem);
-
-    this.PopupService.togglePopup();
+    if(this.notArray.participent.length>0){
+      this.af.database.list('/notifications').push(this.notArray);
+      this.af.database.list('/tasks').push(this.newItem);
+      this.PopupService.togglePopup();
+    } else {
+      alert("You need to assign participents!");
+    }
+    
   }
 
   showEmplList = false;
