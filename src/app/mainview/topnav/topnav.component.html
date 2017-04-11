@@ -8,6 +8,7 @@
         <button (click)="toggleMyTask($event)" [class.active-btn]="TaskService.myTask === UsersService.loggedUser">My tasks</button>
       </div>
       <div class="small-btn-wrapper" tooltip="Toggle these buttons to filter the tasks (On / Off)" placement="bottom">
+      <div class="red-circle-pending" *ngIf="UsersService.loggedUser.admin"><p>{{TaskService.pendingNumber}}</p></div>
         <button *ngIf="UsersService.loggedUser.admin" [class.active-btn]="storedValue === 'pending'" (click)="setTab($event)">Pending</button>
         <button [class.active-btn]="storedValue === 'active'" (click)="setTab($event)">Active</button>
         <button [class.active-btn]="storedValue === 'on hold'" (click)="setTab($event)">On hold</button>
@@ -18,13 +19,31 @@
       <p *ngIf="UsersService.loggedUser.admin"><i class="fa fa-lock admin"></i> Admin Panel:</p>
       <p *ngIf="UsersService.loggedUser.admin" class="pointer plus" tooltip="Add a new task" placement="bottom" (click)="PopupService.togglePopup()"><i class="fa fa-plus-circle fa-fw"></i></p>
       <p *ngIf="UsersService.loggedUser.admin" class="pointer" tooltip="Toggle delete buttons" placement="left" (click)="toggleDelete()"><i class="fa fa-trash-o fa-fw"></i></p>
-      <p class="pointer" (click)="toggleNotification()"><i class="fa fa-bell-o fa-fw"></i></p>
+      <p class="pointer" (click)="toggleNotification()" *ngIf="!UsersService.loggedUser.admin"><i class="fa fa-bell-o fa-fw"></i></p>
       <div class="red-circle" *ngIf="NotificationService.seenNumber > 0"><p>{{NotificationService.seenNumber}}</p></div>
       <ul class="notification-drpdwn" *ngIf="showNotification">
         <li *ngFor ="let noti of NotificationService.notifications | notiPipe:UsersService.loggedUser | reverse">
-        <div class="icon-holder"><p class="fa fa-plus" *ngIf="noti.type === 'add'"></p><p class="fa fa-pencil" *ngIf="noti.type === 'edit'"></p></div>
+        <div class="icon-holder">
+        <p class="fa fa-plus" *ngIf="noti.type === 'add'"></p>
+        <p class="fa fa-pencil" *ngIf="noti.type === 'edit'"></p>
+        <p class="fa fa-spinner" *ngIf="noti.type === 'papprove'"></p>
+        <p class="fa fa-check" *ngIf="noti.type === 'adminapprove'"></p>
+        <p class="fa fa-repeat" *ngIf="noti.type === 'reopen'"></p>
+        <p class="fa fa-times" *ngIf="noti.type === 'deny'"></p>
+        <p class="fa fa-play" *ngIf="noti.type === 'active'"></p>
+        <p class="fa fa-pause" *ngIf="noti.type === 'hold'"></p>
+        </div>
         <div class="content-holder">
-          <div><h4>{{noti.title}}</h4><p><span *ngIf="noti.type === 'add'">Was added on </span><span *ngIf="noti.type === 'edit'">Was edited on </span>{{noti.date |date:'dd-MM-yyyy hh:mm a'}}</p></div>
+          <div><h4>{{noti.title}}</h4><p>
+          <span *ngIf="noti.type === 'add'">Was added </span>
+          <span *ngIf="noti.type === 'edit'">Was edited </span>
+          <span *ngIf="noti.type === 'papprove'">Was marked finished </span>
+          <span *ngIf="noti.type === 'adminapprove'">Was approved </span>
+          <span *ngIf="noti.type === 'reopen'">Was re-opened </span>
+          <span *ngIf="noti.type === 'deny'">Completion was denied </span>
+          <span *ngIf="noti.type === 'active'">Was set active </span>
+          <span *ngIf="noti.type === 'hold'">Was set on hold </span>
+          {{noti.date |date:'dd-MM-yyyy hh:mm a'}}</p></div>
         </div>
         </li>
       </ul>

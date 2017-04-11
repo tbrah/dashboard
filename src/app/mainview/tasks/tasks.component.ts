@@ -26,6 +26,16 @@ export class TasksComponent implements OnInit {
   ngOnInit() {
   }
 
+  currentDate = new Date();
+  convertDate = this.currentDate.toString();
+
+  notArray = {
+          date: "",
+          participent: [],
+          title: "",
+          type: "",
+    }
+
   updateItem(item){
     let updates = {};
     updates['/tasks/' + item.$key] = item;
@@ -87,29 +97,59 @@ export class TasksComponent implements OnInit {
     item.papprove = false;
     item.status = "done";
     this.updateItem(item);
+    this.notArray.date = this.convertDate;
+    this.notArray.participent = item.participent;
+    this.notArray.title = item.title;
+    this.notArray.type = "adminapprove";
+    this.af.database.list('/notifications').push(this.notArray);
   }
   pApprove(item){
     item.papprove = true;
     this.updateItem(item);
+    this.notArray.date = this.convertDate;
+    this.notArray.participent = item.participent;
+    this.notArray.title = item.title;
+    this.notArray.type = "papprove";
+    this.af.database.list('/notifications').push(this.notArray);
   }
   deny(item){
     item.adminapprove = false;
     item.papprove =  false;
     this.updateItem(item);
+    this.notArray.date = this.convertDate;
+    this.notArray.participent = item.participent;
+    this.notArray.title = item.title;
+    this.notArray.type = "deny";
+    this.af.database.list('/notifications').push(this.notArray);
   }
   reopen(item){
     item.adminapprove = false;
     item.papprove = true;
     item.status = "active";
     this.updateItem(item);
+    this.notArray.date = this.convertDate;
+    this.notArray.participent = item.participent;
+    this.notArray.title = item.title;
+    this.notArray.type = "reopen";
+    this.af.database.list('/notifications').push(this.notArray);
   }
   setHold(item){
     item.status = "on hold";
     this.updateItem(item);
+    this.notArray.date = this.convertDate;
+    this.notArray.participent = item.participent;
+    this.notArray.title = item.title;
+    this.notArray.type = "hold";
+    this.af.database.list('/notifications').push(this.notArray);
   }
   setActive(item){
     item.status = "active";
     this.updateItem(item);
+    this.notArray.date = this.convertDate;
+    this.notArray.participent = item.participent;
+    this.notArray.title = item.title;
+    this.notArray.type = "active";
+    this.af.database.list('/notifications').push(this.notArray);
   }
   closeCalendar(){
     this.DatepickerService.currentDate = null;

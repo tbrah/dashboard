@@ -6,24 +6,31 @@ export class TaskService {
 
   items = [];
 
-  /*items: FirebaseListObservable<any[]>;*/
-/*    this.items = af.database.list('/');
-    this.items.subscribe(
-     val => console.log(val)
-*/
   constructor(private af:AngularFire){
-      this.af.database.list('/tasks').subscribe(items => {
-      this.items = items
-    })
+      this.af.database.list('/tasks').subscribe(data =>{
+      this.items = data;
+      this.findPendingNumber();
+    });
   }
 
   currentSearch:any;
   deleteActivation = false;
   currentTab = "all";
+  pendingNumber:number;
 
   //This toggles the user task filter.
   //Switch is in top-nav.
   myTask = null;
+
+  findPendingNumber(){
+    let i = 0;
+    this.items.forEach(function(entry, index){
+      if(entry.papprove){
+        i++;
+      }
+    })
+    this.pendingNumber = i;
+  }
   
 
 }
