@@ -167,14 +167,20 @@
 }
 .red-circle{
   position:absolute;
-  top:0;
+  top:3px;
   right:20px;
   background-color:$red;
   width:20px;
   height:20px;
   border-radius:50%;
   text-align:center;
+  -webkit-animation-name: bounce;
+  -webkit-animation-duration: 0.8s;
+  animation-name: bounce;
+  animation-duration: 0.8s;
   p{
+    font-size:12px;
+    font-weight:700;
     color:$white-font;
     margin:0!important;
     padding:0!important;

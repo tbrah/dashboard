@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class PostsService {
 
-  apiUrl = "http://admin.ordbogen.com.tme.dev.ordbogen.com/testing.php";
+  apiUrl = "/testing.php";
   testing = <any>[];
 
   constructor(private http:Http) {}

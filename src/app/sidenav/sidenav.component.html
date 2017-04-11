@@ -4,14 +4,9 @@
       <hr>
       <div class="profile-area">
         <img src="./assets/{{UsersService.loggedUser.picture}}" (click)="checkList()">
-        <div class="tag-area" (click)="toggleProfileNav()">
-              <h5>{{UsersService.loggedUser.name}}</h5> <b class="caret" [class.caret-switch]="profileNavCtrl"></b>
+        <div class="tag-area">
+              <h5>{{UsersService.loggedUser.name}}</h5>
               <h6>{{UsersService.loggedUser.position}}</h6>
-              <ul class="nav" [class.opennav]="profileNavCtrl">
-                <li><a href=""><p>my profile</p></a></li>
-                <li><a href=""><p>edit profile</p></a></li>
-                <li><a href=""><p>settings</p></a></li>
-              </ul>
         </div>
       </div>
       <hr>
@@ -19,7 +14,12 @@
         <li [class.active-nav]="NavService.selectedNav === 'home'" (click)="checkJson()"><a href="#"><i class="fa fa-home fa-fw"></i><p>home</p></a></li>
         <li><a href="https://calendar.google.com/calendar/render?cid=aHY3bXA4NWJhZjVqN2oxcjdhZXRzcTIwNzBAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ" target="_blank"><i class="fa fa-calendar fa-fw"></i><p>calendar</p></a></li>
         <li [class.active-nav]="NavService.selectedNav === 'tasks'" (click)="selectMenu('tasks')"><a href="#"><i class="fa fa-list fa-fw"></i><p>tasks</p></a></li>
-        <li [class.active-nav]="NavService.selectedNav === 'styleguide'" (click)="selectMenu('styleguide')"><a href="#"><i class="fa fa-map-o fa-fw"></i><p>styleguide</p></a></li>
+        <li [class.active-nav]="NavService.selectedNav === 'styleguide'" (click)="toggleProfileNav()"><a href="#"><i class="fa fa-map-o fa-fw"></i><p>styleguide</p><b class="caret" [class.caret-switch]="profileNavCtrl"></b></a>
+          <ul class="hidden-submenu" [class.opennav]="profileNavCtrl">
+            <li><p class="sub-menu" (click)="selectMenu('styleguide')"><a href="#">Ordbogen Styleguide</a></p></li>
+            <li><p class="sub-menu"><a href="#">Grammatip Styleguide</a></p></li>
+          </ul>
+        </li>
         <li><a href="https://docs.google.com/document/d/1KrZurVaMkh1P7eGKTzYdzK_PJVPtCJpM0eW-X_dOCfI/edit" target="_blank"><i class="fa fa-print fa-fw"></i><p>print checklist</p></a></li>
       </ul>
       <ul>

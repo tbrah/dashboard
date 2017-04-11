@@ -208,6 +208,10 @@ textarea{
   top:-100px;
   width:40px;
   .p-obj{
+    -webkit-animation-name: bounce;
+    -webkit-animation-duration: 0.4s;
+    animation-name: bounce;
+    animation-duration: 0.4s;
     position:relative;
     img{
       width:60px;

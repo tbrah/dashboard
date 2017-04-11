@@ -7,6 +7,10 @@
   left:0;
   z-index:1050;
   outline:0;
+  -webkit-animation-name: scale;
+  -webkit-animation-duration: 0.3s;
+  animation-name: scale;
+  animation-duration: 0.3s;
   .modal-content{
     padding:30px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.17);

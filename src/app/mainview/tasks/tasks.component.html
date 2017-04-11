@@ -1,3 +1,4 @@
+<div class="loader" *ngIf="!TaskService.items.length > 0"><p class="fa fa-spinner fa-pulse fa-3x"></p></div>
 <div class="task-wrapper" *ngFor="let item of TaskService.items | user:TaskService.myTask | search:TaskService.currentSearch | tabFilter:TaskService.currentTab | orderById | orderByDone let idx = index" [class.task-done]="item.adminapprove === true">
     <div class="header">
       <h1 [hidden]="editActive === idx">{{item.title}}</h1>

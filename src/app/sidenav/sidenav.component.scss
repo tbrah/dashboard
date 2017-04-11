@@ -38,11 +38,27 @@ p{
 }
 .nav li{
   margin-bottom:5px;
+  b{
+    margin-left:45px;
+  }
   p{
     display:inline-block;
     line-height: 30px;
     margin-bottom:0;
     text-transform: uppercase;
+  }
+  .hidden-submenu{
+    height:0;
+    overflow:hidden;
+  }
+  .sub-menu{
+    text-transform: none;
+    padding-left:20px;
+    a{
+      font-size:12px;
+      text-decoration: none;
+      color:$white-font;
+    }
   }
   i{
     line-height:30px;
