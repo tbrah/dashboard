@@ -1,11 +1,11 @@
 <div class="loader" *ngIf="!TaskService.items.length > 0"><p class="fa fa-spinner fa-pulse fa-3x"></p></div>
-<div class="task-wrapper" *ngFor="let item of TaskService.items | user:TaskService.myTask | search:TaskService.currentSearch | tabFilter:TaskService.currentTab | orderById | orderByDone let idx = index" [class.task-done]="item.adminapprove === true">
+<div class="task-wrapper" *ngFor="let item of TaskService.items | user:TaskService.myTask | activeUser:TaskService.selectedActiveUser | search:TaskService.currentSearch | tabFilter:TaskService.currentTab | orderById | orderByDone let idx = index" [class.task-done]="item.adminapprove === true">
     <div class="header">
       <h1 [hidden]="editActive === idx">{{item.title}}</h1>
       <input class="edit-header" type="text" value="{{item.title}}" *ngIf="editActive === idx" [(ngModel)]="currentTask.title">
       <div class="right-content">
         <p><i class="fa fa-users"></i>  Participants:</p>
-        <img  *ngFor="let p of item.participent" class="profile-pic-circle" [class.white-profile-pic-circle]="item.status === 'done'" src="./assets/{{p.picture}}" tooltip="{{p.name}}">
+        <img  *ngFor="let p of item.participent" class="profile-pic-circle" [class.white-profile-pic-circle]="item.status === 'done'" src="{{p.image}}" tooltip="{{p.name}}">
       </div>
     </div>
       <div class="status-wrapper">

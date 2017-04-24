@@ -104,13 +104,26 @@ export class TasksComponent implements OnInit {
     this.af.database.list('/notifications').push(this.notArray);
   }
   pApprove(item){
-    item.papprove = true;
-    this.updateItem(item);
-    this.notArray.date = this.convertDate;
-    this.notArray.participent = item.participent;
-    this.notArray.title = item.title;
-    this.notArray.type = "papprove";
-    this.af.database.list('/notifications').push(this.notArray);
+    let nameArray = [];
+    
+    item.participent.forEach(function(entry){
+      nameArray.push(entry.name);
+    });
+
+    let match:boolean;
+    if(nameArray.indexOf(this.UsersService.loggedUser.name) > -1){
+      match = true;
+    };
+
+    if(item.papprove === false && match === true){
+      item.papprove = true;
+      this.updateItem(item);
+      this.notArray.date = this.convertDate;
+      this.notArray.participent = item.participent;
+      this.notArray.title = item.title;
+      this.notArray.type = "papprove";
+      this.af.database.list('/notifications').push(this.notArray);
+    };
   }
   deny(item){
     item.adminapprove = false;

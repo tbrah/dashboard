@@ -113,8 +113,14 @@ textarea{
     }
     .search-field input{
       border-radius:$border-radius;
+      position:relative;
+      z-index:9000;
       padding-left:30px;
       padding-right:30px;
+      &:focus{
+        border-bottom-left-radius:0;
+        border-bottom-right-radius:0;
+      }
     }
     .search-field .drp-dwn{
       left:auto;
@@ -165,6 +171,8 @@ textarea{
     border-left:1px solid $light-gray;
     border-right:1px solid $light-gray;
     border-bottom:1px solid $light-gray;
+    overflow-y:scroll;
+    max-height:360px;
     li{
       background-color:#FFF;
       cursor:pointer;

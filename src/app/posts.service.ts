@@ -11,12 +11,23 @@ export class PostsService {
   apiUrl = "/testing.php";
   testing = <any>[];
 
-  constructor(private http:Http) {}
+  constructor(private http:Http) {
+    this.checkJson();
+  }
 
   getData(){
     return this.http.get(this.apiUrl)
-      .map(res => console.log(res))
+      .map(res => res.json())
       .catch(this.handleError);
+  }
+
+  users = [];
+
+  checkJson(){
+    this.getData().subscribe(
+      data => this.users = data,
+      error => alert(error)
+    );
   }
 
     private handleError (error: Response | any) {

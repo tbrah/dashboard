@@ -3,6 +3,7 @@ import { PopupService } from '../popup.service';
 import { UsersService } from '../users.service';
 import { TaskService } from '../task.service';
 import { DatepickerService } from '../datepicker.service';
+import { PostsService } from '../posts.service';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 @Component({
@@ -12,7 +13,9 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 })
 export class AddTaskComponent implements OnInit {
 
-  constructor(private PopupService:PopupService, private UsersService:UsersService, private DatepickerService:DatepickerService, private TaskService:TaskService, private af:AngularFire,) { }
+  constructor(private PopupService:PopupService, private UsersService:UsersService, private DatepickerService:DatepickerService, private TaskService:TaskService, private af:AngularFire, private PostsService:PostsService) {
+  
+}
 
   ngOnInit() {
   }
@@ -53,7 +56,14 @@ export class AddTaskComponent implements OnInit {
   };
 
   addItem(){
-    let i = this.TaskService.items.length;
+    let arrayLength  = this.TaskService.items.length;
+    let i;
+    if(arrayLength === 0){
+      i = 0;
+    } else {
+      i = this.TaskService.items[this.TaskService.items.length - 1].id;
+    }
+    
     i++;
     this.newItem.id = i;
     
@@ -72,6 +82,8 @@ export class AddTaskComponent implements OnInit {
     this.notArray.participent = this.newItem.participent;
     if(this.notArray.participent.length>0){
       this.newItem.orderby.push(this.UsersService.loggedUser);
+      this.newItem.startdate = this.newItem.startdate.toString();
+      this.newItem.deadline = this.newItem.deadline.toString();
       this.af.database.list('/notifications').push(this.notArray);
       this.af.database.list('/tasks').push(this.newItem);
       this.PopupService.togglePopup();
@@ -81,7 +93,6 @@ export class AddTaskComponent implements OnInit {
     
   }
 
-  showEmplList = false;
 
   cancelAdd(){
     //Reset all the values if user clicks on the (x)
@@ -103,8 +114,17 @@ export class AddTaskComponent implements OnInit {
     this.PopupService.togglePopup();
   }
 
+  showEmplList = false;
+  timer:any;
+
   focusfun(){
-    this.showEmplList = !this.showEmplList;
+    if(this.showEmplList === false ){
+      this.showEmplList = true;
+    } else {
+      this.timer = setTimeout(()=>{
+        this.showEmplList = false;
+      }, 200);
+    }
   }
 
   selectedEmpl(user){

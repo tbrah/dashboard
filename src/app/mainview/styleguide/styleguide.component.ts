@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NavServiceService } from '../../nav-service.service';
 
 @Component({
   selector: 'app-styleguide',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class StyleguideComponent implements OnInit {
 
-  constructor() { }
+  constructor(private NavService:NavServiceService) { }
 
   ngOnInit() {
   }

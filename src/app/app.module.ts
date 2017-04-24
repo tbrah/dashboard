@@ -35,6 +35,8 @@ import { UserPipe } from './user.pipe';
 import { NotiPipePipe } from './noti-pipe.pipe';
 import { StyleguideComponent } from './mainview/styleguide/styleguide.component';
 import { ReversePipe } from './reverse.pipe';
+import { CheckArrayPipe } from './check-array.pipe';
+import { ActiveUserPipe } from './active-user.pipe';
 
 // Must export the config
 export const firebaseConfig = {
@@ -64,6 +66,8 @@ export const firebaseConfig = {
     NotiPipePipe,
     StyleguideComponent,
     ReversePipe,
+    CheckArrayPipe,
+    ActiveUserPipe,
   ],
   imports: [
     BrowserModule,

@@ -45,27 +45,27 @@
                   <span *ngIf="newItem.print === false">No</span><span *ngIf="newItem.print === true">Yes</span><span class="caret"></span>
                 </button>
                 <ul dropdownMenu role="menu" aria-labelledby="single-button">
-                  <li role="menuitem"><a class="dropdown-item" href="#" (click)="togglePrint($event)">Yes</a></li>
-                  <li role="menuitem"><a class="dropdown-item" href="#" (click)="togglePrint($event)">No</a></li>
+                  <li role="menuitem"><a class="dropdown-item" (click)="togglePrint($event)">Yes</a></li>
+                  <li role="menuitem"><a class="dropdown-item" (click)="togglePrint($event)">No</a></li>
                 </ul>
               </div>
             </span></p>
           </div>
           <div class="details-subcontainer no-padding">
-            <div class="search-field"><p>Assign participants:</p><div class="search-wrapper"><label><i class="fa fa-search"></i></label><input type="text" placeholder="Search Employees" [(ngModel)]="UsersService.currentSearch" (focus)="focusfun()"><label class="drp-dwn"><i class="fa fa-sort-desc"></i></label></div></div>
-            <div class="p-drop-down" *ngIf="showEmplList">
-              <ul>
-                <li *ngFor="let user of UsersService.userDB | searchEmployee:UsersService.currentSearch" (click)="selectedEmpl(user)">
-                  <img class="profile-pic-circle" src="./assets/{{user.picture}}"><p>{{user.name}}<br><span>{{user.position}}</span></p>
-                </li>
-              </ul>
-            </div>
+              <div class="search-field"><p>Assign participants:</p><div class="search-wrapper"><label><i class="fa fa-search"></i></label><input class="search-emp" type="text" placeholder="Search Employees" [(ngModel)]="UsersService.currentSearch" (blur)="focusfun()" (focus)="focusfun()"><label class="drp-dwn"><i class="fa fa-sort-desc"></i></label></div></div>
+              <div class="p-drop-down" *ngIf="showEmplList">
+                <ul>
+                  <li *ngFor="let user of PostsService.users | searchEmployee:UsersService.currentSearch | checkArray" (click)="selectedEmpl(user)">
+                    <img class="profile-pic-circle" src="{{user.image}}"><p>{{user.name}}<br><span>{{user.department.name}}</span></p>
+                  </li>
+                </ul>
+              </div>
           </div>
         </div>
         <button class="btn btn-success save" (click)="addItem()"><i class="fa fa-clipboard"></i> Save</button>
         <div class="participant-container">
             <div *ngIf="newItem.participent">
-              <div class="p-obj" *ngFor="let p of newItem.participent"><img class="profile-pic-circle" src="./assets/{{p.picture}}" tooltip="{{p.name}}" placement="left">
+              <div class="p-obj" *ngFor="let p of newItem.participent"><img class="profile-pic-circle" src="{{p.image}}" tooltip="{{p.name}}" placement="left">
                 <button class="close" (click)="deleteP(p)"><i class="fa fa-times"></i></button>
               </div>
             </div>

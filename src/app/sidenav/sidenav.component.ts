@@ -3,6 +3,7 @@ import { UsersService } from '../users.service';
 import { NotificationService } from '../notification.service';
 import { NavServiceService } from '../nav-service.service';
 import { PostsService } from '../posts.service';
+import { TaskService } from '../task.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -13,7 +14,7 @@ export class SidenavComponent implements OnInit {
 
   profileNavCtrl:boolean = false;
 
-  constructor(private UsersService:UsersService, private NavService:NavServiceService, private NotificationService:NotificationService, private PostsService:PostsService) {
+  constructor(private TaskService:TaskService, private UsersService:UsersService, private NavService:NavServiceService, private NotificationService:NotificationService, private PostsService:PostsService) {
     
   }
 
@@ -44,30 +45,29 @@ export class SidenavComponent implements OnInit {
       this.NavService.selectedNav = "calendar";
     } if (menu === "tasks"){
       this.NavService.selectedNav = "tasks";
-    } if (menu === "styleguide"){
-      this.NavService.selectedNav = "styleguide";
+    } if (menu === "styleguide-ordbogen"){
+      this.NavService.selectedNav = "styleguide-ordbogen";
     } if (menu === "print checklist"){
       this.NavService.selectedNav = "print checklist";
+    } if (menu === "styleguide-grammatip"){
+      this.NavService.selectedNav = "styleguide-grammatip";
     }
+    console.log(this.NavService.selectedNav);
   }
 
   checkList(){
-    console.log(this.NotificationService.seenArray)
     this.NotificationService.findArrayLength();
   }
-
-  testing = [];
+  
   errorMessage;
 
   getData: string;
 
-  checkJson(){
-    this.PostsService.getData().subscribe(
-      data => this.testing = data,
-      error => alert(error),
-      () => console.log(this.testing)
-    );
+  selectActiveUser(user){
+    this.TaskService.selectedActiveUser = user.toString();
   }
 
-
+  clearSelEmpl(){
+    this.TaskService.selectedActiveUser = "all";
+  }
 }

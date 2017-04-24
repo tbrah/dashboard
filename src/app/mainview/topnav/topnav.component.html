@@ -8,7 +8,7 @@
         <button (click)="toggleMyTask($event)" [class.active-btn]="TaskService.myTask === UsersService.loggedUser">My tasks</button>
       </div>
       <div class="small-btn-wrapper" tooltip="Toggle these buttons to filter the tasks (On / Off)" placement="bottom">
-      <div class="red-circle-pending" *ngIf="UsersService.loggedUser.admin"><p>{{TaskService.pendingNumber}}</p></div>
+      <div class="red-circle-pending" *ngIf="UsersService.loggedUser.admin && TaskService.pendingNumber > 0"><p>{{TaskService.pendingNumber}}</p></div>
         <button *ngIf="UsersService.loggedUser.admin" [class.active-btn]="storedValue === 'pending'" (click)="setTab($event)">Pending</button>
         <button [class.active-btn]="storedValue === 'active'" (click)="setTab($event)">Active</button>
         <button [class.active-btn]="storedValue === 'on hold'" (click)="setTab($event)">On hold</button>
@@ -22,7 +22,7 @@
       <p class="pointer" (click)="toggleNotification()" *ngIf="!UsersService.loggedUser.admin"><i class="fa fa-bell-o fa-fw"></i></p>
       <div class="red-circle" *ngIf="NotificationService.seenNumber > 0"><p>{{NotificationService.seenNumber}}</p></div>
       <ul class="notification-drpdwn" *ngIf="showNotification">
-        <li *ngFor ="let noti of NotificationService.notifications | notiPipe:UsersService.loggedUser | reverse">
+        <li *ngFor ="let noti of NotificationService.notifications | notiPipe:UsersService.loggedUser | reverse let idx = index" [class.notification-active]="idx < NotificationService.seenNumber">
         <div class="icon-holder">
         <p class="fa fa-plus" *ngIf="noti.type === 'add'"></p>
         <p class="fa fa-pencil" *ngIf="noti.type === 'edit'"></p>

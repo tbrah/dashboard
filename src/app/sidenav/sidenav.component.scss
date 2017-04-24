@@ -38,8 +38,13 @@ p{
 }
 .nav li{
   margin-bottom:5px;
+  cursor:pointer;
   b{
     margin-left:45px;
+    color:$white-font;
+  }
+  i{
+    color:$white-font;
   }
   p{
     display:inline-block;
@@ -148,6 +153,38 @@ p{
       background-repeat: no-repeat;
       background-position:bottom;
       background-position-x:-1300px;
-      background-image:url("../../assets/city-landscape.jpg");
+      /*background-image:url("../../assets/city-landscape.jpg");*/
     }
   }
+.users-btn{
+  width:200px;
+  background-color:rgba(255, 255, 255, 0.16);
+  &:hover{
+    background-color:hsla(0, 0%, 100%, 0.26);
+    color:$white-font;
+  }
+  &:focus{
+    background-color:hsla(0, 0%, 100%, 0.26);
+    color:$white-font;
+  }
+}
+.active-users{
+  max-height:300px;
+  overflow-y:scroll;
+}
+.empl-view{
+  margin-top:20px;
+  text-align:center;
+}
+.clear-btn{
+  margin-top:20px;
+  background-color:rgba(255, 255, 255, 0.16);
+  &:hover{
+    background-color:hsla(0, 0%, 100%, 0.26);
+    color:$white-font;
+  }
+  &:focus{
+    background-color:hsla(0, 0%, 100%, 0.26);
+    color:$white-font;
+  }
+}

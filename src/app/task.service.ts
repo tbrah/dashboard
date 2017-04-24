@@ -5,11 +5,14 @@ import { AngularFire, FirebaseListObservable } from 'angularfire2';
 export class TaskService {
 
   items = [];
+  activeUsers = [];
+  selectedActiveUser = "all";
 
   constructor(private af:AngularFire){
       this.af.database.list('/tasks').subscribe(data =>{
       this.items = data;
       this.findPendingNumber();
+      this.searchForUsers();
     });
   }
 
@@ -32,5 +35,16 @@ export class TaskService {
     this.pendingNumber = i;
   }
   
-
+  searchForUsers(){
+    let userArray = <any>[];
+    this.items.forEach(function(entry){
+      entry.participent.forEach(function(childEntry){
+        let name = childEntry.name;
+        if(userArray.indexOf(name) === -1){
+          userArray.push(childEntry.name)
+        }
+      })  
+    });
+    this.activeUsers = userArray;
+  }
 }

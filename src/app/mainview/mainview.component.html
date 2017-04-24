@@ -6,7 +6,7 @@
         <div class="col-md-12">
           <app-tasks *ngIf="NavService.selectedNav === 'tasks'"></app-tasks>
           <app-popup></app-popup>
-          <app-styleguide *ngIf="NavService.selectedNav === 'styleguide'"></app-styleguide>
+          <app-styleguide *ngIf="NavService.selectedNav === 'styleguide-ordbogen' || NavService.selectedNav === 'styleguide-grammatip'"></app-styleguide>
         </div>
       </div>
     </div>

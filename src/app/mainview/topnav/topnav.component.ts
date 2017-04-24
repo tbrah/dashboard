@@ -81,10 +81,14 @@ export class TopnavComponent implements OnInit {
   }
 
   showNotification = false;
+  NotificationActiveNb
 
   toggleNotification(){
     this.showNotification = !this.showNotification;
     this.NotificationService.clearNewNotifications();
+    let num = this.NotificationService.seenNumber - 1;
+    this.NotificationActiveNb = num;
+    console.log(num);
   }
 
 }
